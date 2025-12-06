@@ -55,7 +55,7 @@ export default function Composition() {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="glass-effect rounded-3xl p-8"
+                className="glass-effect rounded-3xl p-8 bg-slate-50"
               >
                 <h2 className="mb-4">Виды симметрии в карточках</h2>
                 <p className="text-lg mb-8">

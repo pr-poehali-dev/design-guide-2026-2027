@@ -297,7 +297,7 @@ export default function Typography() {
                 </p>
 
                 <div className="space-y-8">
-                  <div className="bg-secondary/50 rounded-2xl p-8">
+                  <div className="rounded-2xl p-8 bg-gray-200">
                     <h3 className="mb-4">Гротески (Sans-serif)</h3>
                     <p className="text-muted-foreground mb-6">
                       Шрифты без засечек. Современные, чистые, хорошо читаются на экранах. 
@@ -308,7 +308,7 @@ export default function Typography() {
                     </div>
                   </div>
 
-                  <div className="bg-secondary/50 rounded-2xl p-8">
+                  <div className="rounded-2xl p-8 bg-gray-200">
                     <h3 className="mb-4">Антиквы (Serif)</h3>
                     <p className="text-muted-foreground mb-6">
                       Шрифты с засечками. Классические, элегантные, располагают к чтению. 
@@ -319,7 +319,7 @@ export default function Typography() {
                     </div>
                   </div>
 
-                  <div className="bg-secondary/50 rounded-2xl p-8">
+                  <div className="rounded-2xl p-8 bg-gray-200">
                     <h3 className="mb-4">Декоративные (Display)</h3>
                     <p className="text-muted-foreground mb-6">
                       Художественные шрифты с уникальным характером. 

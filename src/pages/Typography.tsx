@@ -243,19 +243,19 @@ export default function Typography() {
                 </p>
 
                 <div className="grid md:grid-cols-4 gap-6 mb-12">
-                  <div className="text-center p-6 bg-secondary/50 rounded-2xl">
+                  <div className="text-center p-6 rounded-2xl bg-gray-200">
                     <div className="text-sm text-muted-foreground mb-2">Light (300)</div>
                     <div className="text-3xl" style={{ fontWeight: 300 }}>Аа</div>
                   </div>
-                  <div className="text-center p-6 bg-secondary/50 rounded-2xl">
+                  <div className="text-center p-6 rounded-2xl bg-gray-200">
                     <div className="text-sm text-muted-foreground mb-2">Regular (400)</div>
                     <div className="text-3xl" style={{ fontWeight: 400 }}>Аа</div>
                   </div>
-                  <div className="text-center p-6 bg-secondary/50 rounded-2xl">
+                  <div className="text-center p-6 rounded-2xl bg-gray-200">
                     <div className="text-sm text-muted-foreground mb-2">Bold (700)</div>
                     <div className="text-3xl" style={{ fontWeight: 700 }}>Аа</div>
                   </div>
-                  <div className="text-center p-6 bg-secondary/50 rounded-2xl">
+                  <div className="text-center p-6 rounded-2xl bg-gray-200">
                     <div className="text-sm text-muted-foreground mb-2">Black (900)</div>
                     <div className="text-3xl" style={{ fontWeight: 900 }}>Аа</div>
                   </div>

@@ -120,19 +120,19 @@ export default function Typography() {
                 </p>
 
                 <div className="grid md:grid-cols-3 gap-6 mb-12">
-                  <div className="text-center p-6 bg-secondary/50 rounded-2xl">
+                  <div className="text-center p-6 rounded-2xl bg-gray-200">
                     <div className="text-sm text-muted-foreground mb-2">Плотный</div>
                     <div className="text-2xl" style={{ letterSpacing: '-0.03em' }}>
                       дизайн карточек
                     </div>
                   </div>
-                  <div className="text-center p-6 bg-secondary/50 rounded-2xl">
+                  <div className="text-center p-6 rounded-2xl bg-gray-200">
                     <div className="text-sm text-muted-foreground mb-2">Нормальный</div>
                     <div className="text-2xl" style={{ letterSpacing: '0' }}>
                       дизайн карточек
                     </div>
                   </div>
-                  <div className="text-center p-6 bg-secondary/50 rounded-2xl">
+                  <div className="text-center p-6 rounded-2xl bg-gray-200">
                     <div className="text-sm text-muted-foreground mb-2">Разреженный</div>
                     <div className="text-2xl" style={{ letterSpacing: '0.1em' }}>
                       дизайн карточек

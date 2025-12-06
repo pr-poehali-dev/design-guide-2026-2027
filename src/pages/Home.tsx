@@ -74,7 +74,7 @@ export default function Home() {
               mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
-            <div className="glass-effect p-8 md:p-12 rounded-3xl">
+            <div className="glass-effect p-8 md:p-12 rounded-3xl bg-white/40">
               <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
                 Станьте профессиональным дизайнером карточек для маркетплейсов
               </h1>

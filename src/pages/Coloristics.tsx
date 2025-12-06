@@ -286,11 +286,9 @@ export default function Coloristics() {
                             style={{ backgroundColor: mistake.right.bg }}
                           >
                             <div
-                              className="text-2xl font-bold"
+                              className="text-2xl font-bold bg-transparent"
                               style={{ color: mistake.right.text }}
-                            >
-                              Карточка товара
-                            </div>
+                            >Пример текста</div>
                           </div>
                           <div className="mt-2 flex gap-2">
                             <code className="text-xs px-2 py-1 bg-background rounded">

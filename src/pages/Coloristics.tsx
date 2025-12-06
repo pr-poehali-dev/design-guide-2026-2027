@@ -95,7 +95,7 @@ export default function Coloristics() {
                     </p>
                   </div>
 
-                  <div className="p-6 bg-secondary/50 rounded-2xl">
+                  <div className="p-6 rounded-2xl bg-slate-50">
                     <div className="grid grid-cols-3 gap-2 mb-4">
                       <div className="aspect-square bg-red-500 rounded-lg" />
                       <div className="aspect-square bg-blue-500 rounded-lg" />
@@ -168,7 +168,7 @@ export default function Coloristics() {
                         {scheme.colors.map((color) => (
                           <div
                             key={color}
-                            className="aspect-square rounded-xl hover-lift cursor-pointer"
+                            className="aspect-square rounded-xl hover-lift cursor-pointer bg-violet-500"
                             style={{ backgroundColor: color }}
                           />
                         ))}
@@ -265,9 +265,7 @@ export default function Coloristics() {
                             <div
                               className="text-2xl font-bold"
                               style={{ color: mistake.wrong.text }}
-                            >
-                              Карточка товара
-                            </div>
+                            >Пример текста</div>
                           </div>
                           <div className="mt-2 flex gap-2">
                             <code className="text-xs px-2 py-1 bg-background rounded">

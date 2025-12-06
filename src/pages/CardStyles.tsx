@@ -1,5 +1,8 @@
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Header from '@/components/Header';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '@/contexts/AuthContext';
+import Navigation from '@/components/Navigation';
 
 const styles = [
   {
@@ -53,10 +56,19 @@ const styles = [
 ];
 
 export default function CardStyles() {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    if (!user?.hasSubscription && !user?.isAdmin) {
+      navigate('/subscribe');
+    }
+  }, [user, navigate]);
+
   return (
     <div className="min-h-screen relative overflow-hidden">
       <div className="fixed inset-0 -z-10 animated-gradient opacity-5" />
-      <Header />
+      <Navigation />
 
       <main className="pt-32 pb-20">
         <div className="container mx-auto px-6 max-w-6xl">

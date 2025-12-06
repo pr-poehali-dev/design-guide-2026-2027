@@ -1,11 +1,22 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Header from '@/components/Header';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '@/contexts/AuthContext';
+import Navigation from '@/components/Navigation';
 import { Slider } from '@/components/ui/slider';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 export default function Typography() {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    if (!user?.hasSubscription && !user?.isAdmin) {
+      navigate('/subscribe');
+    }
+  }, [user, navigate]);
+
   const [kerning, setKerning] = useState([0]);
   const [tracking, setTracking] = useState([0]);
   const [lineHeight, setLineHeight] = useState([1.5]);
@@ -14,7 +25,7 @@ export default function Typography() {
   return (
     <div className="min-h-screen relative overflow-hidden">
       <div className="fixed inset-0 -z-10 animated-gradient opacity-5" />
-      <Header />
+      <Navigation />
 
       <main className="pt-32 pb-20">
         <div className="container mx-auto px-6 max-w-6xl">

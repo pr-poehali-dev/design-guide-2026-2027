@@ -1,20 +1,27 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 interface User {
-  id: number;
+  id: string;
   email: string;
   name: string;
   role: string;
   hasSubscription: boolean;
+  isAdmin: boolean;
+  progress: {
+    [key: string]: number;
+  };
 }
 
 interface AuthContextType {
   user: User | null;
   login: (email: string, password: string) => Promise<void>;
   register: (email: string, name: string, password: string) => Promise<void>;
+  adminLogin: (username: string, password: string) => Promise<boolean>;
   logout: () => void;
   isAuthenticated: boolean;
   isAdmin: boolean;
+  updateProgress: (sectionId: string, progress: number) => void;
+  purchaseSubscription: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -31,11 +38,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const login = async (email: string, password: string) => {
     const mockUser: User = {
-      id: 1,
+      id: '1',
       email,
       name: 'Пользователь',
       role: 'user',
       hasSubscription: false,
+      isAdmin: false,
+      progress: {},
     };
     
     setUser(mockUser);
@@ -44,15 +53,60 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const register = async (email: string, name: string, password: string) => {
     const mockUser: User = {
-      id: 1,
+      id: '1',
       email,
       name,
       role: 'user',
       hasSubscription: false,
+      isAdmin: false,
+      progress: {},
     };
     
     setUser(mockUser);
     localStorage.setItem('user', JSON.stringify(mockUser));
+  };
+
+  const adminLogin = async (username: string, password: string): Promise<boolean> => {
+    if (username === 'admin' && password === '123456') {
+      const adminUser: User = {
+        id: 'admin',
+        email: 'admin@site.com',
+        name: 'Администратор',
+        role: 'admin',
+        hasSubscription: true,
+        isAdmin: true,
+        progress: {},
+      };
+      setUser(adminUser);
+      localStorage.setItem('user', JSON.stringify(adminUser));
+      return true;
+    }
+    return false;
+  };
+
+  const updateProgress = (sectionId: string, progress: number) => {
+    if (user) {
+      const updatedUser = {
+        ...user,
+        progress: {
+          ...user.progress,
+          [sectionId]: progress,
+        },
+      };
+      setUser(updatedUser);
+      localStorage.setItem('user', JSON.stringify(updatedUser));
+    }
+  };
+
+  const purchaseSubscription = () => {
+    if (user) {
+      const updatedUser = {
+        ...user,
+        hasSubscription: true,
+      };
+      setUser(updatedUser);
+      localStorage.setItem('user', JSON.stringify(updatedUser));
+    }
   };
 
   const logout = () => {
@@ -64,9 +118,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     user,
     login,
     register,
+    adminLogin,
     logout,
     isAuthenticated: !!user,
-    isAdmin: user?.role === 'admin',
+    isAdmin: user?.isAdmin || false,
+    updateProgress,
+    purchaseSubscription,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -1,10 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Header from '@/components/Header';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '@/contexts/AuthContext';
+import Navigation from '@/components/Navigation';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 
 export default function Composition() {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    if (!user?.hasSubscription && !user?.isAdmin) {
+      navigate('/subscribe');
+    }
+  }, [user, navigate]);
+
   const [selectedSymmetry, setSelectedSymmetry] = useState<string | null>(null);
 
   const symmetryTypes = [
@@ -17,7 +28,7 @@ export default function Composition() {
   return (
     <div className="min-h-screen relative overflow-hidden">
       <div className="fixed inset-0 -z-10 animated-gradient opacity-5" />
-      <Header />
+      <Navigation />
 
       <main className="pt-32 pb-20">
         <div className="container mx-auto px-6 max-w-6xl">

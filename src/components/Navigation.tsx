@@ -10,14 +10,14 @@ import {
 } from '@/components/ui/dropdown-menu';
 import Icon from '@/components/ui/icon';
 
-export default function Header() {
+export default function Navigation() {
   const { user, logout, isAuthenticated } = useAuth();
 
   return (
     <motion.header
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="fixed top-0 left-0 right-0 z-50 glass-effect"
+      className="glass-effect sticky top-0 z-50 mb-8"
     >
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <Link to="/" className="text-3xl font-black tracking-tight">
@@ -71,9 +71,11 @@ export default function Header() {
               <Link to="/login">Войти</Link>
             </Button>
           )}
-          <Button asChild className="glass-effect hover-lift border-0">
-            <Link to="/subscribe">Купить доступ</Link>
-          </Button>
+          {!user?.hasSubscription && !user?.isAdmin && (
+            <Button asChild className="glass-effect hover-lift border-0">
+              <Link to="/subscribe">Купить доступ</Link>
+            </Button>
+          )}
         </div>
       </div>
     </motion.header>

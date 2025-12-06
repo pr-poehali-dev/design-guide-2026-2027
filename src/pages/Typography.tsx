@@ -62,19 +62,19 @@ export default function Typography() {
                 </p>
 
                 <div className="grid md:grid-cols-3 gap-6 mb-12">
-                  <div className="text-center p-6 bg-secondary/50 rounded-2xl">
+                  <div className="text-center p-6 rounded-2xl bg-gray-200">
                     <div className="text-sm text-muted-foreground mb-2">Отрицательный</div>
                     <div className="text-3xl font-bold" style={{ letterSpacing: '-0.05em' }}>
                       ПРИМЕР
                     </div>
                   </div>
-                  <div className="text-center p-6 bg-secondary/50 rounded-2xl">
+                  <div className="text-center p-6 rounded-2xl bg-gray-200">
                     <div className="text-sm text-muted-foreground mb-2">Стандартный</div>
                     <div className="text-3xl font-bold" style={{ letterSpacing: '0' }}>
                       ПРИМЕР
                     </div>
                   </div>
-                  <div className="text-center p-6 bg-secondary/50 rounded-2xl">
+                  <div className="text-center p-6 rounded-2xl bg-gray-200">
                     <div className="text-sm text-muted-foreground mb-2">Положительный</div>
                     <div className="text-3xl font-bold" style={{ letterSpacing: '0.1em' }}>
                       ПРИМЕР

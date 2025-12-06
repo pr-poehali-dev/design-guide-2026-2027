@@ -67,7 +67,7 @@ export default function Composition() {
                   {symmetryTypes.map((type) => (
                     <div
                       key={type.id}
-                      className="p-6 bg-secondary/50 rounded-2xl hover-lift cursor-pointer"
+                      className="p-6 rounded-2xl hover-lift cursor-pointer bg-gray-200"
                       onClick={() => setSelectedSymmetry(type.id)}
                     >
                       <h3 className="mb-2">{type.name}</h3>
@@ -108,10 +108,10 @@ export default function Composition() {
                   ))}
                 </div>
 
-                <div className="bg-background/50 rounded-2xl p-8">
+                <div className="rounded-2xl p-8 bg-slate-50">
                   <h3 className="mb-6">Практика: определите тип симметрии</h3>
                   <div className="grid md:grid-cols-2 gap-8">
-                    <div className="p-6 border-2 border-accent/30 rounded-xl">
+                    <div className="p-6 border-2 border-accent/30 rounded-xl bg-gray-200">
                       <div className="aspect-[3/4] bg-gradient-to-b from-secondary to-background rounded-lg mb-4 flex items-center justify-center">
                         <div className="flex gap-4">
                           <div className="w-20 h-40 bg-primary/20 rounded-lg" />

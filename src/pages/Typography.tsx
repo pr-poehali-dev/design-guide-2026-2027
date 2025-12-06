@@ -178,7 +178,7 @@ export default function Typography() {
                 </p>
 
                 <div className="grid md:grid-cols-3 gap-6 mb-12">
-                  <div className="p-6 bg-secondary/50 rounded-2xl">
+                  <div className="p-6 rounded-2xl bg-gray-200">
                     <div className="text-sm text-muted-foreground mb-2">Плотный (1.0)</div>
                     <div className="text-lg" style={{ lineHeight: '1.0' }}>
                       Дизайн карточек для
@@ -186,7 +186,7 @@ export default function Typography() {
                       внимания к деталям
                     </div>
                   </div>
-                  <div className="p-6 bg-secondary/50 rounded-2xl">
+                  <div className="p-6 rounded-2xl bg-gray-200">
                     <div className="text-sm text-muted-foreground mb-2">Оптимальный (1.5)</div>
                     <div className="text-lg" style={{ lineHeight: '1.5' }}>
                       Дизайн карточек для
@@ -194,7 +194,7 @@ export default function Typography() {
                       внимания к деталям
                     </div>
                   </div>
-                  <div className="p-6 bg-secondary/50 rounded-2xl">
+                  <div className="p-6 rounded-2xl bg-gray-200">
                     <div className="text-sm text-muted-foreground mb-2">Разреженный (2.0)</div>
                     <div className="text-lg" style={{ lineHeight: '2.0' }}>
                       Дизайн карточек для

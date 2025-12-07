@@ -297,18 +297,18 @@ export default function Theory() {
                     <div className="grid md:grid-cols-3 gap-4">
                       <div className="text-center">
                         <div className="text-4xl mb-2">📊</div>
-                        <div className="font-semibold mb-1">Данные</div>
-                        <p className="text-sm text-muted-foreground">Характеристики товара</p>
+                        <div className="font-semibold mb-1">Аналитика</div>
+                        <p className="text-sm text-muted-foreground">Анализ перимуществ товара</p>
                       </div>
                       <div className="text-center">
                         <div className="text-4xl mb-2">🎨</div>
-                        <div className="font-semibold mb-1">Визуал</div>
+                        <div className="font-semibold mb-1">Дизайн</div>
                         <p className="text-sm text-muted-foreground">Иконки, цвета, графика</p>
                       </div>
                       <div className="text-center">
                         <div className="text-4xl mb-2">📝</div>
-                        <div className="font-semibold mb-1">Текст</div>
-                        <p className="text-sm text-muted-foreground">Короткие пояснения</p>
+                        <div className="font-semibold mb-1">Типографика</div>
+                        <p className="text-sm text-muted-foreground">Работа с текстом</p>
                       </div>
                     </div>
                   </div>

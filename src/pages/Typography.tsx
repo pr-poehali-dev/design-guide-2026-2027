@@ -114,7 +114,7 @@ export default function Typography() {
                 className="glass-effect rounded-3xl p-8"
               >
                 <h2 className="mb-4">Трекинг</h2>
-                <p className="text-lg mb-8">Трекинг —  расстояние между всеми символами. Влияет на общую плотность и ритм текста</p>
+                <p className="text-lg mb-8">Равномерное увеличение или уменьшение пробелов между всеми символами в выделенном фрагменте</p>
 
                 <div className="grid md:grid-cols-3 gap-6 mb-12">
                   <div className="text-center p-6 rounded-2xl bg-[#ffffff]">

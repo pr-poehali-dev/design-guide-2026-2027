@@ -283,42 +283,32 @@ export default function Typography() {
                 className="glass-effect rounded-3xl p-8"
               >
                 <h2 className="mb-4">Виды шрифтов</h2>
-                <p className="text-lg mb-8">
-                  Различные типы шрифтов используются для разных целей и создают разное настроение.
-                </p>
+                <p className="text-lg mb-8">Используются для разных целей и создают разное настроение
+От правильно подобранных шрифтов зависит всё восприятие информации со слайда</p>
 
                 <div className="space-y-8">
-                  <div className="rounded-2xl p-8 bg-gray-200">
+                  <div className="rounded-2xl p-8 bg-[#ffffff]">
                     <h3 className="mb-4">Гротески (Sans-serif)</h3>
-                    <p className="text-muted-foreground mb-6">
-                      Шрифты без засечек. Современные, чистые, хорошо читаются на экранах. 
-                      Идеальны для заголовков и интерфейсов.
-                    </p>
-                    <div className="text-4xl font-sans font-bold">
-                      Современный дизайн
-                    </div>
+                    <p className="text-muted-foreground mb-6">Шрифты без засечек. Основной выбор для современной инфографики.
+Чистый, нейтральный, хорошо читаемый в мелких размерах. Идеален для основного текста, пояснений, плашек
+(I
+</p>
+                    <div className="text-4xl font-sans font-bold">Основной выбор</div>
                   </div>
 
-                  <div className="rounded-2xl p-8 bg-gray-200">
+                  <div className="rounded-2xl p-8 bg-[#ffffff]">
                     <h3 className="mb-4">Антиквы (Serif)</h3>
-                    <p className="text-muted-foreground mb-6">
-                      Шрифты с засечками. Классические, элегантные, располагают к чтению. 
-                      Отлично подходят для длинных текстов.
-                    </p>
-                    <div className="text-4xl font-serif">
-                      Элегантная типографика
-                    </div>
+                    <p className="text-muted-foreground mb-6">Шрифты с засечками. Классические, элегантные, располагают к чтению.
+Используйте для заголовков или в премиум-сегменте, чтобы передать надежность, традиционность, уважение</p>
+                    <div className="text-4xl font-serif">Премиальные товары</div>
                   </div>
 
-                  <div className="rounded-2xl p-8 bg-gray-200">
+                  <div className="rounded-2xl p-8 bg-[#ffffff]">
                     <h3 className="mb-4">Декоративные (Display)</h3>
-                    <p className="text-muted-foreground mb-6">
-                      Художественные шрифты с уникальным характером. 
-                      Используются для акцентов и креативных заголовков.
-                    </p>
-                    <div className="text-4xl font-black tracking-wider">
-                      КРЕАТИВНОСТЬ
-                    </div>
+                    <p className="text-muted-foreground mb-6">Стилизованные шрифты. Используются для акцентов и креативных заголовков.
+Стоит использовать ТОЛЬКО как акцент (одно слово, логотип, выделение категории) и в крупном размере.
+Никогда не набирайте ими основной текст — это убьет читаемость.</p>
+                    <div className="text-4xl font-black tracking-wider">ЗАГОЛОВКИ</div>
                   </div>
                 </div>
               </motion.div>

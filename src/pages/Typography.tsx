@@ -114,25 +114,22 @@ export default function Typography() {
                 className="glass-effect rounded-3xl p-8"
               >
                 <h2 className="mb-4">Трекинг</h2>
-                <p className="text-lg mb-8">
-                  Трекинг — это расстояние между всеми символами в слове. 
-                  Влияет на общую плотность и ритм текста.
-                </p>
+                <p className="text-lg mb-8">Трекинг —  расстояние между всеми символами. Влияет на общую плотность и ритм текста</p>
 
                 <div className="grid md:grid-cols-3 gap-6 mb-12">
-                  <div className="text-center p-6 rounded-2xl bg-gray-200">
+                  <div className="text-center p-6 rounded-2xl bg-[#ffffff]">
                     <div className="text-sm text-muted-foreground mb-2">Плотный</div>
                     <div className="text-2xl" style={{ letterSpacing: '-0.03em' }}>
                       дизайн карточек
                     </div>
                   </div>
-                  <div className="text-center p-6 rounded-2xl bg-gray-200">
+                  <div className="text-center p-6 rounded-2xl bg-[#ffffff]">
                     <div className="text-sm text-muted-foreground mb-2">Нормальный</div>
                     <div className="text-2xl" style={{ letterSpacing: '0' }}>
                       дизайн карточек
                     </div>
                   </div>
-                  <div className="text-center p-6 rounded-2xl bg-gray-200">
+                  <div className="text-center p-6 rounded-2xl bg-[#ffffff]">
                     <div className="text-sm text-muted-foreground mb-2">Разреженный</div>
                     <div className="text-2xl" style={{ letterSpacing: '0.1em' }}>
                       дизайн карточек
@@ -141,7 +138,7 @@ export default function Typography() {
                 </div>
 
                 <div className="bg-background/50 rounded-2xl p-8">
-                  <h3 className="mb-6">Практика: настройте трекинг</h3>
+                  <h3 className="mb-6 font-semibold">Интерактивный пример:</h3>
                   <div
                     className="text-3xl mb-8 text-center"
                     style={{ letterSpacing: `${tracking[0]}em` }}

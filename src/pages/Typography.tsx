@@ -35,7 +35,7 @@ export default function Typography() {
             className="mb-16"
           >
             <h1 className="mb-6">Типографика</h1>
-            <p className="text-xl text-muted-foreground">Работа с текстом, один из важнейших аспектов грамотного дизайна. 
+            <p className="text-xl text-muted-foreground">Работа с текстом, один из важнейших аспектов грамотного дизайна. <br>
 Правильная работа со шрифтами помогает быстро и понятно донести важную информацию до покупателя</p>
           </motion.div>
 

@@ -244,7 +244,7 @@ export default function Theory() {
                       <ul className="space-y-2 text-sm">
                         <li className="flex items-start gap-2">
                           <span>✓</span>
-                          <span>Понятна за 3-5 секунд</span>
+                          <span>Понятна за 3-5 секунд, дизайн чистый и грамотный</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <span>✓</span>
@@ -270,11 +270,11 @@ export default function Theory() {
                       <ul className="space-y-2 text-sm">
                         <li className="flex items-start gap-2">
                           <span>✗</span>
-                          <span>Перегружена информацией</span>
+                          <span>Перегружена информацией, сложна для восприятия</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <span>✗</span>
-                          <span>Мелкий нечитаемый текст</span>
+                          <span>Не адаптирована под мобильные устройства</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <span>✗</span>
@@ -282,11 +282,11 @@ export default function Theory() {
                         </li>
                         <li className="flex items-start gap-2">
                           <span>✗</span>
-                          <span>Слишком много цветов</span>
+                          <span>Плохая работа с цветом - визуальная каша для глаз</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <span>✗</span>
-                          <span>Противоречивые шрифты</span>
+                          <span>Противоречивые или нечитаемые шрифты</span>
                         </li>
                       </ul>
                     </div>

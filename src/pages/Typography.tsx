@@ -1,19 +1,19 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '@/contexts/AuthContext';
-import Navigation from '@/components/Navigation';
-import { Slider } from '@/components/ui/slider';
-import { Button } from '@/components/ui/button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
+import Navigation from "@/components/Navigation";
+import { Slider } from "@/components/ui/slider";
+import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function Typography() {
   const { user } = useAuth();
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     if (!user?.hasSubscription && !user?.isAdmin) {
-      navigate('/subscribe');
+      navigate("/subscribe");
     }
   }, [user, navigate]);
 
@@ -35,8 +35,11 @@ export default function Typography() {
             className="mb-16"
           >
             <h1 className="mb-6">Типографика</h1>
-            <p className="text-xl text-muted-foreground">Работа с текстом, один из важнейших аспектов грамотного дизайна. <break>
-Правильная работа со шрифтами помогает быстро и понятно донести важную информацию до покупателя</p>
+            <p className="text-xl text-muted-foreground">
+              Работа с текстом, один из важнейших аспектов грамотного дизайна.
+              Правильная работа со шрифтами помогает быстро и понятно донести
+              важную информацию до покупателя
+            </p>
           </motion.div>
 
           <Tabs defaultValue="kerning" className="space-y-12">
@@ -57,24 +60,41 @@ export default function Typography() {
                 className="glass-effect rounded-3xl p-8"
               >
                 <h2 className="mb-4">Кернинг</h2>
-                <p className="text-lg mb-8 font-normal">Расстояние между двумя конкретными буквами в слове</p>
+                <p className="text-lg mb-8 font-normal">
+                  Расстояние между двумя конкретными буквами в слове
+                </p>
 
                 <div className="grid md:grid-cols-3 gap-6 mb-12">
                   <div className="text-center p-6 rounded-2xl bg-[#ffffff]">
-                    <div className="text-sm text-muted-foreground mb-2">Отрицательный</div>
-                    <div className="text-3xl font-bold" style={{ letterSpacing: '-0.05em' }}>
+                    <div className="text-sm text-muted-foreground mb-2">
+                      Отрицательный
+                    </div>
+                    <div
+                      className="text-3xl font-bold"
+                      style={{ letterSpacing: "-0.05em" }}
+                    >
                       ПРИМЕР
                     </div>
                   </div>
                   <div className="text-center p-6 rounded-2xl bg-[#ffffff]">
-                    <div className="text-sm text-muted-foreground mb-2">Стандартный</div>
-                    <div className="text-3xl font-bold" style={{ letterSpacing: '0' }}>
+                    <div className="text-sm text-muted-foreground mb-2">
+                      Стандартный
+                    </div>
+                    <div
+                      className="text-3xl font-bold"
+                      style={{ letterSpacing: "0" }}
+                    >
                       ПРИМЕР
                     </div>
                   </div>
                   <div className="text-center p-6 rounded-2xl bg-[#ffffff]">
-                    <div className="text-sm text-muted-foreground mb-2">Положительный</div>
-                    <div className="text-3xl font-bold" style={{ letterSpacing: '0.1em' }}>
+                    <div className="text-sm text-muted-foreground mb-2">
+                      Положительный
+                    </div>
+                    <div
+                      className="text-3xl font-bold"
+                      style={{ letterSpacing: "0.1em" }}
+                    >
                       ПРИМЕР
                     </div>
                   </div>
@@ -90,7 +110,9 @@ export default function Typography() {
                   </div>
                   <div className="space-y-4">
                     <div className="flex items-center gap-4">
-                      <span className="text-sm min-w-32">Кернинг: {kerning[0].toFixed(2)}em</span>
+                      <span className="text-sm min-w-32">
+                        Кернинг: {kerning[0].toFixed(2)}em
+                      </span>
                       <Slider
                         value={kerning}
                         onValueChange={setKerning}
@@ -112,24 +134,39 @@ export default function Typography() {
                 className="glass-effect rounded-3xl p-8"
               >
                 <h2 className="mb-4">Трекинг</h2>
-                <p className="text-lg mb-8">Равномерное увеличение или уменьшение пробелов между всеми символами в выделенном фрагменте</p>
+                <p className="text-lg mb-8">
+                  Равномерное увеличение или уменьшение пробелов между всеми
+                  символами в выделенном фрагменте
+                </p>
 
                 <div className="grid md:grid-cols-3 gap-6 mb-12">
                   <div className="text-center p-6 rounded-2xl bg-[#ffffff]">
-                    <div className="text-sm text-muted-foreground mb-2">Плотный</div>
-                    <div className="text-2xl" style={{ letterSpacing: '-0.03em' }}>
+                    <div className="text-sm text-muted-foreground mb-2">
+                      Плотный
+                    </div>
+                    <div
+                      className="text-2xl"
+                      style={{ letterSpacing: "-0.03em" }}
+                    >
                       дизайн карточек
                     </div>
                   </div>
                   <div className="text-center p-6 rounded-2xl bg-[#ffffff]">
-                    <div className="text-sm text-muted-foreground mb-2">Нормальный</div>
-                    <div className="text-2xl" style={{ letterSpacing: '0' }}>
+                    <div className="text-sm text-muted-foreground mb-2">
+                      Нормальный
+                    </div>
+                    <div className="text-2xl" style={{ letterSpacing: "0" }}>
                       дизайн карточек
                     </div>
                   </div>
                   <div className="text-center p-6 rounded-2xl bg-[#ffffff]">
-                    <div className="text-sm text-muted-foreground mb-2">Разреженный</div>
-                    <div className="text-2xl" style={{ letterSpacing: '0.1em' }}>
+                    <div className="text-sm text-muted-foreground mb-2">
+                      Разреженный
+                    </div>
+                    <div
+                      className="text-2xl"
+                      style={{ letterSpacing: "0.1em" }}
+                    >
                       дизайн карточек
                     </div>
                   </div>
@@ -141,11 +178,14 @@ export default function Typography() {
                     className="text-3xl mb-8 text-center"
                     style={{ letterSpacing: `${tracking[0]}em` }}
                   >
-                    Эффективные карточки для маркетплейсов создаются с учетом композиции и цвета
+                    Эффективные карточки для маркетплейсов создаются с учетом
+                    композиции и цвета
                   </div>
                   <div className="space-y-4">
                     <div className="flex items-center gap-4">
-                      <span className="text-sm min-w-32">Трекинг: {tracking[0].toFixed(2)}em</span>
+                      <span className="text-sm min-w-32">
+                        Трекинг: {tracking[0].toFixed(2)}em
+                      </span>
                       <Slider
                         value={tracking}
                         onValueChange={setTracking}
@@ -167,32 +207,36 @@ export default function Typography() {
                 className="glass-effect rounded-3xl p-8"
               >
                 <h2 className="mb-4">Интерлиньяж</h2>
-                <p className="text-lg mb-8">Расстояние между базовыми линиями соседних строк
-</p>
+                <p className="text-lg mb-8">
+                  Расстояние между базовыми линиями соседних строк
+                </p>
 
                 <div className="grid md:grid-cols-3 gap-6 mb-12">
                   <div className="p-6 rounded-2xl bg-[#ffffff]">
-                    <div className="text-sm text-muted-foreground mb-2">Плотный (1.0)</div>
-                    <div className="text-lg" style={{ lineHeight: '1.0' }}>
-                      Дизайн карточек для
-                      маркетплейсов требует
-                      внимания к деталям
+                    <div className="text-sm text-muted-foreground mb-2">
+                      Плотный (1.0)
+                    </div>
+                    <div className="text-lg" style={{ lineHeight: "1.0" }}>
+                      Дизайн карточек для маркетплейсов требует внимания к
+                      деталям
                     </div>
                   </div>
                   <div className="p-6 rounded-2xl bg-[#ffffff]">
-                    <div className="text-sm text-muted-foreground mb-2">Оптимальный (1.5)</div>
-                    <div className="text-lg" style={{ lineHeight: '1.5' }}>
-                      Дизайн карточек для
-                      маркетплейсов требует
-                      внимания к деталям
+                    <div className="text-sm text-muted-foreground mb-2">
+                      Оптимальный (1.5)
+                    </div>
+                    <div className="text-lg" style={{ lineHeight: "1.5" }}>
+                      Дизайн карточек для маркетплейсов требует внимания к
+                      деталям
                     </div>
                   </div>
                   <div className="p-6 rounded-2xl bg-[#ffffff]">
-                    <div className="text-sm text-muted-foreground mb-2">Разреженный (2.0)</div>
-                    <div className="text-lg" style={{ lineHeight: '2.0' }}>
-                      Дизайн карточек для
-                      маркетплейсов требует
-                      внимания к деталям
+                    <div className="text-sm text-muted-foreground mb-2">
+                      Разреженный (2.0)
+                    </div>
+                    <div className="text-lg" style={{ lineHeight: "2.0" }}>
+                      Дизайн карточек для маркетплейсов требует внимания к
+                      деталям
                     </div>
                   </div>
                 </div>
@@ -203,13 +247,16 @@ export default function Typography() {
                     className="text-2xl mb-8"
                     style={{ lineHeight: lineHeight[0] }}
                   >
-                    Правильный интерлиньяж делает текст более читаемым и приятным для глаз.
-                    Слишком маленькое расстояние создает ощущение тесноты, 
-                    а слишком большое — разрывает визуальную связь между строками.
+                    Правильный интерлиньяж делает текст более читаемым и
+                    приятным для глаз. Слишком маленькое расстояние создает
+                    ощущение тесноты, а слишком большое — разрывает визуальную
+                    связь между строками.
                   </div>
                   <div className="space-y-4">
                     <div className="flex items-center gap-4">
-                      <span className="text-sm min-w-32">Интерлиньяж: {lineHeight[0].toFixed(1)}</span>
+                      <span className="text-sm min-w-32">
+                        Интерлиньяж: {lineHeight[0].toFixed(1)}
+                      </span>
                       <Slider
                         value={lineHeight}
                         onValueChange={setLineHeight}
@@ -231,24 +278,43 @@ export default function Typography() {
                 className="glass-effect rounded-3xl p-8"
               >
                 <h2 className="mb-4">Начертания шрифта</h2>
-                <p className="text-lg mb-8">Жирность шрифта. Используется для создания иерархии и акцентов.</p>
+                <p className="text-lg mb-8">
+                  Жирность шрифта. Используется для создания иерархии и
+                  акцентов.
+                </p>
 
                 <div className="grid md:grid-cols-4 gap-6 mb-12">
                   <div className="text-center p-6 rounded-2xl bg-[#ffffff]">
-                    <div className="text-sm text-muted-foreground mb-2">Light (300)</div>
-                    <div className="text-3xl" style={{ fontWeight: 300 }}>Аа</div>
+                    <div className="text-sm text-muted-foreground mb-2">
+                      Light (300)
+                    </div>
+                    <div className="text-3xl" style={{ fontWeight: 300 }}>
+                      Аа
+                    </div>
                   </div>
                   <div className="text-center p-6 rounded-2xl bg-[#ffffff]">
-                    <div className="text-sm text-muted-foreground mb-2">Regular (400)</div>
-                    <div className="text-3xl" style={{ fontWeight: 400 }}>Аа</div>
+                    <div className="text-sm text-muted-foreground mb-2">
+                      Regular (400)
+                    </div>
+                    <div className="text-3xl" style={{ fontWeight: 400 }}>
+                      Аа
+                    </div>
                   </div>
                   <div className="text-center p-6 rounded-2xl bg-[#ffffff]">
-                    <div className="text-sm text-muted-foreground mb-2">Bold (700)</div>
-                    <div className="text-3xl" style={{ fontWeight: 700 }}>Аа</div>
+                    <div className="text-sm text-muted-foreground mb-2">
+                      Bold (700)
+                    </div>
+                    <div className="text-3xl" style={{ fontWeight: 700 }}>
+                      Аа
+                    </div>
                   </div>
                   <div className="text-center p-6 rounded-2xl bg-[#ffffff]">
-                    <div className="text-sm text-muted-foreground mb-2">Black (900)</div>
-                    <div className="text-3xl" style={{ fontWeight: 900 }}>Аа</div>
+                    <div className="text-sm text-muted-foreground mb-2">
+                      Black (900)
+                    </div>
+                    <div className="text-3xl" style={{ fontWeight: 900 }}>
+                      Аа
+                    </div>
                   </div>
                 </div>
 
@@ -264,7 +330,7 @@ export default function Typography() {
                     {[300, 400, 500, 600, 700, 800, 900].map((weight) => (
                       <Button
                         key={weight}
-                        variant={fontWeight === weight ? 'default' : 'outline'}
+                        variant={fontWeight === weight ? "default" : "outline"}
                         onClick={() => setFontWeight(weight)}
                         className="glass-effect"
                       >
@@ -283,27 +349,51 @@ export default function Typography() {
                 className="glass-effect rounded-3xl p-8"
               >
                 <h2 className="mb-4">Виды шрифтов</h2>
-                <p className="text-lg mb-8">Используются для разных целей и создают разное настроение. От правильно подобранных шрифтов зависит всё восприятие информации со слайда</p>
+                <p className="text-lg mb-8">
+                  Используются для разных целей и создают разное настроение. От
+                  правильно подобранных шрифтов зависит всё восприятие
+                  информации со слайда
+                </p>
 
                 <div className="space-y-8">
                   <div className="rounded-2xl p-8 bg-[#ffffff]">
                     <h3 className="mb-4">Гротески (Sans-serif)</h3>
-                    <p className="text-muted-foreground mb-6">Эти шрифты без засечек — «рабочие лошадки» и ваш основной выбор. Они должны быть разборчивыми в любом размере и иметь множество начертаний для создания иерархии (Inter, Manrope, Montserrat, Onest, Gilroy)</p>
-                    <div className="text-4xl font-sans font-bold">Основной выбор</div>
+                    <p className="text-muted-foreground mb-6">
+                      Эти шрифты без засечек — «рабочие лошадки» и ваш основной
+                      выбор. Они должны быть разборчивыми в любом размере и
+                      иметь множество начертаний для создания иерархии (Inter,
+                      Manrope, Montserrat, Onest, Gilroy)
+                    </p>
+                    <div className="text-4xl font-sans font-bold">
+                      Основной выбор
+                    </div>
                   </div>
 
                   <div className="rounded-2xl p-8 bg-[#ffffff]">
                     <h3 className="mb-4">Антиквы (Serif)</h3>
-                    <p className="text-muted-foreground mb-6">Шрифты с засечками. Классические, элегантные. Используются для заголовков, чаще в премиум-сегменте, чтобы передать надежность, традиционность, уважение (Baskerville, Georgia, Rockwell, Lora)</p>
-                    <div className="text-4xl font-serif">Премиальные товары</div>
+                    <p className="text-muted-foreground mb-6">
+                      Шрифты с засечками. Классические, элегантные. Используются
+                      для заголовков, чаще в премиум-сегменте, чтобы передать
+                      надежность, традиционность, уважение (Baskerville,
+                      Georgia, Rockwell, Lora)
+                    </p>
+                    <div className="text-4xl font-serif">
+                      Премиальные товары
+                    </div>
                   </div>
 
                   <div className="rounded-2xl p-8 bg-[#ffffff]">
                     <h3 className="mb-4">Декоративные (Display)</h3>
-                    <p className="text-muted-foreground mb-6">Стилизованные шрифты. Используются для акцентов и креативных заголовков. Стоит использовать ТОЛЬКО как акцент (одно слово, логотип, выделение категории) и в крупном размере.
-
-Никогда не набирайте ими основной текст — это убьет читаемость (Bebas Neue, Caveat, Great Vibes)</p>
-                    <div className="text-4xl font-black tracking-wider">ЗАГОЛОВКИ</div>
+                    <p className="text-muted-foreground mb-6">
+                      Стилизованные шрифты. Используются для акцентов и
+                      креативных заголовков. Стоит использовать ТОЛЬКО как
+                      акцент (одно слово, логотип, выделение категории) и в
+                      крупном размере. Никогда не набирайте ими основной текст —
+                      это убьет читаемость (Bebas Neue, Caveat, Great Vibes)
+                    </p>
+                    <div className="text-4xl font-black tracking-wider">
+                      ЗАГОЛОВКИ
+                    </div>
                   </div>
                 </div>
               </motion.div>

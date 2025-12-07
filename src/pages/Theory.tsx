@@ -233,11 +233,9 @@ export default function Theory() {
                 
                 <div className="space-y-6">
                   <div className="bg-secondary/50 rounded-2xl p-6">
-                    <p className="text-lg leading-relaxed">
-                      Инфографика на карточке товара — это визуальное представление информации 
-                      о продукте. Она помогает покупателю быстро понять ключевые характеристики 
-                      и преимущества товара без долгого чтения текста.
-                    </p>
+                    <p className="text-lg leading-relaxed">Инфографика в карточке товара — это визуальное представление информации о продукте.
+Она помогает покупателю быстро понять ключевые характеристики и преимущества товара без долгого чтения текста.
+Качественная инфографика повышает продажи  товара, а также помогает селлерам выделяться среди конкурентов на маркетплейсах</p>
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-6">
@@ -246,15 +244,15 @@ export default function Theory() {
                       <ul className="space-y-2 text-sm">
                         <li className="flex items-start gap-2">
                           <span>✓</span>
-                          <span>Понятная за 3-5 секунд</span>
+                          <span>Понятна за 3-5 секунд</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <span>✓</span>
-                          <span>Выделяет главные преимущества</span>
+                          <span>Выделяет главные преимущества товара</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <span>✓</span>
-                          <span>Использует иконки и схемы</span>
+                          <span>Использует иконки и изображения</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <span>✓</span>
@@ -262,7 +260,7 @@ export default function Theory() {
                         </li>
                         <li className="flex items-start gap-2">
                           <span>✓</span>
-                          <span>Соответствует стилю бренда</span>
+                          <span>Визуально привлекательна, отражает суть товара</span>
                         </li>
                       </ul>
                     </div>

@@ -57,7 +57,7 @@ export default function Profile() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="p-4 rounded-xl bg-white/5 border border-white/10">
+                <div className="p-4 rounded-xl border border-white/10 bg-[#ffffff]">
                   <div className="flex items-center gap-3 mb-2">
                     <Icon name={user.hasSubscription ? 'CheckCircle' : 'XCircle'} size={24} />
                     <span className="font-semibold">Статус подписки</span>
@@ -77,7 +77,7 @@ export default function Profile() {
                   )}
                 </div>
 
-                <div className="p-4 rounded-xl bg-white/5 border border-white/10">
+                <div className="p-4 rounded-xl border border-white/10 bg-[#ffffff]">
                   <div className="flex items-center gap-3 mb-2">
                     <Icon name="TrendingUp" size={24} />
                     <span className="font-semibold">Общий прогресс</span>
@@ -100,7 +100,7 @@ export default function Profile() {
                   return (
                     <div
                       key={section.id}
-                      className="p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all cursor-pointer"
+                      className="p-4 rounded-xl border border-white/10 hover:bg-white/10 transition-all cursor-pointer bg-[#ffffff]"
                       onClick={() => {
                         if (user.hasSubscription || user.isAdmin) {
                           navigate(`/${section.id}`);

@@ -57,9 +57,7 @@ export default function Typography() {
                 className="glass-effect rounded-3xl p-8"
               >
                 <h2 className="mb-4">Кернинг</h2>
-                <p className="text-lg mb-8 font-normal">Кернинг —  расстояние между двумя символами в слове.
-Правильный кернинг делает текст более читаемым и эстетичным.
-</p>
+                <p className="text-lg mb-8 font-normal">Расстояние между двумя конкретными буквами в слове</p>
 
                 <div className="grid md:grid-cols-3 gap-6 mb-12">
                   <div className="text-center p-6 rounded-2xl bg-[#ffffff]">

@@ -141,19 +141,19 @@ export default function Theory() {
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-start gap-3">
                       <span className="text-accent">•</span>
-                      <span>Разрешение не менее 72 DPI для веб, 300 DPI для печати</span>
+                      <span>Оптимальное разрешение изображений 72 DPI </span>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="text-accent">•</span>
-                      <span>Размер файла обычно до 10 МБ (проверяйте требования площадки)</span>
+                      <span>Используйте цветовое пространство sRGB для создания макетов</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="text-accent">•</span>
-                      <span>Используйте RGB цветовую модель для экранов</span>
+                      <span>Рекомендуемое количество слайдов в макете – не менее 5</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="text-accent">•</span>
-                      <span>Основное изображение должно быть на белом фоне (требование площадок)</span>
+                      <span>Товар важно изображать достоверно </span>
                     </li>
                   </ul>
                 </div>

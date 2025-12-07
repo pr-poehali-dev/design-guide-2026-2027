@@ -36,6 +36,12 @@ const sections = [
     description: 'Узнайте фундаментальные принципы визуального дизайна и психологию восприятия',
     icon: 'BookOpen',
   },
+  {
+    id: 'video-tutorials',
+    title: 'Видеоуроки',
+    description: 'Посмотрите эксклюзивные видеоуроки от топовых дизайнеров и создайте работы в портфолио',
+    icon: 'Video',
+  },
 ];
 
 export default function Home() {
@@ -68,17 +74,20 @@ export default function Home() {
       <div className="relative z-10">
         <Navigation />
 
-        <main className="container mx-auto px-4 py-12">
+        <main className="container mx-auto px-4 pt-24 pb-12">
           <section
             className={`max-w-4xl mx-auto mb-16 transition-all duration-1000 ${
               mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
-            <div className="glass-effect p-8 md:p-12 rounded-3xl bg-slate-50">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Станьте профессиональным дизайнером карточек для маркетплейсов
+            <div className="text-center mb-12">
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                Освойте дизайн для маркетплейсов.<br />
+                Быстро. Легко.
               </h1>
-              
+            </div>
+
+            <div className="glass-effect p-8 md:p-12 rounded-3xl bg-slate-50 mb-12">
               <div className="space-y-4 text-lg leading-relaxed">
                 <p>
                   В эпоху электронной коммерции качество визуального оформления товара напрямую влияет на продажи. 
@@ -97,6 +106,32 @@ export default function Home() {
                   и увеличивают конверсию. Каждый раздел содержит теоретическую базу, примеры работ и практические 
                   рекомендации от действующих специалистов.
                 </p>
+                
+                <div className="mt-8 p-6 bg-background/60 rounded-2xl">
+                  <div className="grid md:grid-cols-3 gap-6">
+                    <div className="flex items-start gap-3">
+                      <Icon name="CheckCircle" size={24} className="text-purple-500 flex-shrink-0 mt-1" />
+                      <div>
+                        <p className="font-medium mb-1">Только нужный материал</p>
+                        <p className="text-sm text-muted-foreground">Без лишней воды, конкретно и по делу</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Icon name="Eye" size={24} className="text-pink-500 flex-shrink-0 mt-1" />
+                      <div>
+                        <p className="font-medium mb-1">Наглядные примеры</p>
+                        <p className="text-sm text-muted-foreground">Интерактивные примеры для практики</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Icon name="Video" size={24} className="text-purple-500 flex-shrink-0 mt-1" />
+                      <div>
+                        <p className="font-medium mb-1">Эксклюзивные видео</p>
+                        <p className="text-sm text-muted-foreground">От топовых практикующих дизайнеров</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 
                 <div className="flex flex-wrap gap-4 mt-8">
                   {!isAuthenticated ? (

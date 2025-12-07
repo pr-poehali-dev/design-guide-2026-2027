@@ -2,7 +2,9 @@ import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
+import { useProgress } from '@/contexts/ProgressContext';
 import Navigation from '@/components/Navigation';
+import ProgressBar from '@/components/ProgressBar';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const marketplaceSizes = [
@@ -70,12 +72,19 @@ const resources = [
 export default function Theory() {
   const { user } = useAuth();
   const navigate = useNavigate();
+  const { markSectionAsVisited } = useProgress();
   
   useEffect(() => {
     if (!user?.hasSubscription && !user?.isAdmin) {
       navigate('/subscribe');
     }
   }, [user, navigate]);
+
+  useEffect(() => {
+    if (user?.hasSubscription || user?.isAdmin) {
+      markSectionAsVisited('theory');
+    }
+  }, [user, markSectionAsVisited]);
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -318,6 +327,7 @@ export default function Theory() {
           </Tabs>
         </div>
       </main>
+      {(user?.hasSubscription || user?.isAdmin) && <ProgressBar />}
     </div>
   );
 }

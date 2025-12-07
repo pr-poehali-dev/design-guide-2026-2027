@@ -1,14 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
+import { useProgress } from '@/contexts/ProgressContext';
 import Navigation from '@/components/Navigation';
+import ProgressBar from '@/components/ProgressBar';
+import Icon from '@/components/ui/icon';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Button } from '@/components/ui/button';
+import ImageCarousel from '@/components/ImageCarousel';
 
 export default function Composition() {
   const { user } = useAuth();
   const navigate = useNavigate();
+  const { markSectionAsVisited } = useProgress();
   
   useEffect(() => {
     if (!user?.hasSubscription && !user?.isAdmin) {
@@ -16,13 +20,35 @@ export default function Composition() {
     }
   }, [user, navigate]);
 
-  const [selectedSymmetry, setSelectedSymmetry] = useState<string | null>(null);
+  useEffect(() => {
+    if (user?.hasSubscription || user?.isAdmin) {
+      markSectionAsVisited('composition');
+    }
+  }, [user, markSectionAsVisited]);
 
   const symmetryTypes = [
     { id: 'vertical', name: 'Вертикальная', description: 'Зеркальное отражение по вертикали' },
     { id: 'horizontal', name: 'Горизонтальная', description: 'Зеркальное отражение по горизонтали' },
     { id: 'radial', name: 'Радиальная', description: 'Симметрия относительно центра' },
     { id: 'diagonal', name: 'Диагональная', description: 'Симметрия по диагонали' },
+  ];
+
+  const focalPoints = [
+    {
+      title: 'Правило третей',
+      description: 'Размещайте важные элементы на пересечении линий, делящих изображение на трети',
+      icon: 'Grid3x3',
+    },
+    {
+      title: 'Центральная композиция',
+      description: 'Главный объект в центре создает симметричную и статичную композицию',
+      icon: 'Target',
+    },
+    {
+      title: 'Диагональная композиция',
+      description: 'Размещение элементов по диагонали создает динамику и движение',
+      icon: 'TrendingUp',
+    },
   ];
 
   return (
@@ -47,7 +73,6 @@ export default function Composition() {
             <div className="overflow-x-auto pb-2">
               <TabsList className="glass-effect p-2 w-max">
                 <TabsTrigger value="symmetry">Виды симметрии</TabsTrigger>
-                <TabsTrigger value="weight">Визуальный вес</TabsTrigger>
                 <TabsTrigger value="focal">Фокусные центры</TabsTrigger>
                 <TabsTrigger value="guides">Направляющие</TabsTrigger>
               </TabsList>
@@ -65,158 +90,14 @@ export default function Composition() {
                   подходят для разных типов товаров и задач.
                 </p>
 
-                <div className="grid md:grid-cols-2 gap-6 mb-12">
+                <div className="grid md:grid-cols-2 gap-6">
                   {symmetryTypes.map((type) => (
-                    <div
-                      key={type.id}
-                      className="p-6 rounded-2xl hover-lift cursor-pointer bg-gray-200"
-                      onClick={() => setSelectedSymmetry(type.id)}
-                    >
+                    <div key={type.id} className="glass-effect rounded-2xl p-6 bg-slate-50">
                       <h3 className="mb-2">{type.name}</h3>
                       <p className="text-sm text-muted-foreground mb-4">{type.description}</p>
-                      <div className="aspect-square bg-background rounded-xl flex items-center justify-center">
-                        {type.id === 'vertical' && (
-                          <div className="flex gap-2">
-                            <div className="w-16 h-32 bg-gradient-to-r from-accent to-primary rounded-lg" />
-                            <div className="w-1 h-32 bg-border" />
-                            <div className="w-16 h-32 bg-gradient-to-l from-accent to-primary rounded-lg" />
-                          </div>
-                        )}
-                        {type.id === 'horizontal' && (
-                          <div className="flex flex-col gap-2">
-                            <div className="w-32 h-16 bg-gradient-to-b from-accent to-primary rounded-lg" />
-                            <div className="w-32 h-1 bg-border" />
-                            <div className="w-32 h-16 bg-gradient-to-t from-accent to-primary rounded-lg" />
-                          </div>
-                        )}
-                        {type.id === 'radial' && (
-                          <div className="relative w-32 h-32">
-                            <div className="absolute inset-0 bg-gradient-to-br from-accent to-primary rounded-full" />
-                            <div className="absolute inset-4 bg-background rounded-full" />
-                            <div className="absolute inset-8 bg-gradient-to-tl from-accent to-primary rounded-full" />
-                          </div>
-                        )}
-                        {type.id === 'diagonal' && (
-                          <div className="relative w-32 h-32">
-                            <div className="absolute top-0 left-0 w-16 h-16 bg-gradient-to-br from-accent to-primary rounded-lg" />
-                            <div className="absolute bottom-0 right-0 w-16 h-16 bg-gradient-to-tl from-accent to-primary rounded-lg" />
-                            <div className="absolute inset-0 flex items-center justify-center">
-                              <div className="w-full h-px bg-border rotate-45" />
-                            </div>
-                          </div>
-                        )}
-                      </div>
+                      <ImageCarousel images={['1', '2', '3']} aspectRatio="3/4" />
                     </div>
                   ))}
-                </div>
-
-                <div className="rounded-2xl p-8 bg-slate-50">
-                  <h3 className="mb-6">Практика: определите тип симметрии</h3>
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div className="p-6 border-2 border-accent/30 rounded-xl bg-gray-200">
-                      <div className="aspect-[3/4] bg-gradient-to-b from-secondary to-background rounded-lg mb-4 flex items-center justify-center">
-                        <div className="flex gap-4">
-                          <div className="w-20 h-40 bg-primary/20 rounded-lg" />
-                          <div className="w-20 h-40 bg-primary/20 rounded-lg" />
-                        </div>
-                      </div>
-                      <p className="text-center text-sm text-muted-foreground">
-                        {selectedSymmetry ? `Выбрано: ${symmetryTypes.find(t => t.id === selectedSymmetry)?.name}` : 'Выберите тип симметрии'}
-                      </p>
-                    </div>
-                    <div className="flex flex-col gap-3">
-                      {symmetryTypes.map((type) => (
-                        <Button
-                          key={type.id}
-                          variant={selectedSymmetry === type.id ? 'default' : 'outline'}
-                          onClick={() => setSelectedSymmetry(type.id)}
-                          className="glass-effect justify-start text-left h-auto py-4"
-                        >
-                          <div>
-                            <div className="font-semibold">{type.name}</div>
-                            <div className="text-xs text-muted-foreground">{type.description}</div>
-                          </div>
-                        </Button>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </TabsContent>
-
-            <TabsContent value="weight" className="space-y-8">
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="glass-effect rounded-3xl p-8"
-              >
-                <h2 className="mb-4">Визуальный вес элементов</h2>
-                <p className="text-lg mb-8">
-                  Визуальный вес — это то, насколько элемент привлекает внимание. 
-                  Размер, цвет, контраст и насыщенность влияют на вес.
-                </p>
-
-                <div className="grid md:grid-cols-3 gap-6 mb-12">
-                  <div className="p-6 bg-secondary/50 rounded-2xl text-center">
-                    <div className="text-sm text-muted-foreground mb-4">Легкий вес</div>
-                    <div className="flex items-center justify-center h-40">
-                      <div className="w-12 h-12 bg-muted/30 rounded-lg" />
-                    </div>
-                    <p className="text-xs mt-4">Малый размер, светлый цвет</p>
-                  </div>
-                  <div className="p-6 bg-secondary/50 rounded-2xl text-center">
-                    <div className="text-sm text-muted-foreground mb-4">Средний вес</div>
-                    <div className="flex items-center justify-center h-40">
-                      <div className="w-20 h-20 bg-primary/50 rounded-lg" />
-                    </div>
-                    <p className="text-xs mt-4">Средний размер и контраст</p>
-                  </div>
-                  <div className="p-6 bg-secondary/50 rounded-2xl text-center">
-                    <div className="text-sm text-muted-foreground mb-4">Тяжелый вес</div>
-                    <div className="flex items-center justify-center h-40">
-                      <div className="w-32 h-32 bg-gradient-to-br from-accent to-primary rounded-lg shadow-lg" />
-                    </div>
-                    <p className="text-xs mt-4">Большой размер, яркий цвет</p>
-                  </div>
-                </div>
-
-                <div className="bg-background/50 rounded-2xl p-8">
-                  <h3 className="mb-6">Принципы визуального веса:</h3>
-                  <div className="space-y-4">
-                    <div className="flex items-start gap-4">
-                      <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center font-bold text-sm flex-shrink-0">
-                        1
-                      </div>
-                      <div>
-                        <div className="font-semibold mb-1">Размер имеет значение</div>
-                        <p className="text-sm text-muted-foreground">
-                          Чем больше элемент, тем больше его визуальный вес
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-4">
-                      <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center font-bold text-sm flex-shrink-0">
-                        2
-                      </div>
-                      <div>
-                        <div className="font-semibold mb-1">Цвет и контраст</div>
-                        <p className="text-sm text-muted-foreground">
-                          Яркие и насыщенные цвета привлекают больше внимания
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-4">
-                      <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center font-bold text-sm flex-shrink-0">
-                        3
-                      </div>
-                      <div>
-                        <div className="font-semibold mb-1">Сложность формы</div>
-                        <p className="text-sm text-muted-foreground">
-                          Сложные формы весят больше, чем простые геометрические фигуры
-                        </p>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </motion.div>
             </TabsContent>
@@ -229,77 +110,62 @@ export default function Composition() {
               >
                 <h2 className="mb-4">Фокусные центры</h2>
                 <p className="text-lg mb-8">
-                  Фокусный центр — это точка, которая первой привлекает взгляд зрителя. 
-                  Правильное размещение фокусных центров управляет вниманием покупателя.
+                  Фокусный центр — это точка, которая первой привлекает внимание зрителя. 
+                  Правильное размещение помогает направить взгляд на главное.
                 </p>
 
-                <div className="grid md:grid-cols-2 gap-8 mb-12">
-                  <div className="bg-secondary/50 rounded-2xl p-6">
-                    <h3 className="mb-4">Правило третей</h3>
-                    <div className="aspect-[3/4] bg-background rounded-lg relative overflow-hidden">
-                      <div className="absolute inset-0 grid grid-cols-3 grid-rows-3">
-                        <div className="border-r border-b border-accent/30" />
-                        <div className="border-r border-b border-accent/30" />
-                        <div className="border-b border-accent/30" />
-                        <div className="border-r border-b border-accent/30" />
-                        <div className="border-r border-b border-accent/30" />
-                        <div className="border-b border-accent/30" />
-                        <div className="border-r border-accent/30" />
-                        <div className="border-r border-accent/30" />
-                        <div />
-                      </div>
-                      <div className="absolute top-1/3 left-1/3 w-3 h-3 bg-accent rounded-full animate-pulse" />
-                      <div className="absolute top-1/3 right-1/3 w-3 h-3 bg-accent rounded-full animate-pulse" />
-                      <div className="absolute bottom-1/3 left-1/3 w-3 h-3 bg-accent rounded-full animate-pulse" />
-                      <div className="absolute bottom-1/3 right-1/3 w-3 h-3 bg-accent rounded-full animate-pulse" />
+                <div className="grid md:grid-cols-3 gap-6 mb-12">
+                  {focalPoints.map((point) => (
+                    <div key={point.title} className="p-6 bg-secondary/50 rounded-2xl">
+                      <Icon name={point.icon as any} size={32} className="text-purple-500 mb-4" />
+                      <h3 className="mb-2">{point.title}</h3>
+                      <p className="text-sm text-muted-foreground">{point.description}</p>
                     </div>
-                    <p className="text-sm text-muted-foreground mt-4">
-                      Разместите важные элементы на пересечении линий третей
-                    </p>
-                  </div>
-
-                  <div className="bg-secondary/50 rounded-2xl p-6">
-                    <h3 className="mb-4">Центральная композиция</h3>
-                    <div className="aspect-[3/4] bg-background rounded-lg relative overflow-hidden flex items-center justify-center">
-                      <div className="w-24 h-24 bg-gradient-to-br from-accent to-primary rounded-full animate-pulse" />
-                    </div>
-                    <p className="text-sm text-muted-foreground mt-4">
-                      Центральное расположение создает симметрию и баланс
-                    </p>
-                  </div>
+                  ))}
                 </div>
 
                 <div className="bg-background/50 rounded-2xl p-8">
-                  <h3 className="mb-6">Как создать фокусный центр:</h3>
+                  <h3 className="mb-6">Визуализация фокусных центров</h3>
                   <div className="grid md:grid-cols-3 gap-6">
-                    <div className="text-center p-4">
-                      <div className="w-full aspect-square bg-secondary rounded-xl mb-4 flex items-center justify-center">
-                        <div className="text-6xl font-black">А</div>
+                    <div className="relative aspect-[3/4] bg-slate-100 rounded-xl overflow-hidden">
+                      <div className="absolute inset-0 grid grid-cols-3 grid-rows-3">
+                        {Array.from({ length: 9 }, (_, i) => (
+                          <div key={i} className="border border-purple-300/30" />
+                        ))}
                       </div>
-                      <div className="font-semibold mb-2">Контраст</div>
-                      <p className="text-sm text-muted-foreground">
-                        Используйте контрастные цвета
-                      </p>
+                      <div className="absolute top-1/3 left-1/3 w-4 h-4 bg-purple-500 rounded-full -translate-x-1/2 -translate-y-1/2" />
+                      <div className="absolute top-1/3 left-2/3 w-4 h-4 bg-purple-500 rounded-full -translate-x-1/2 -translate-y-1/2" />
+                      <div className="absolute top-2/3 left-1/3 w-4 h-4 bg-purple-500 rounded-full -translate-x-1/2 -translate-y-1/2" />
+                      <div className="absolute top-2/3 left-2/3 w-4 h-4 bg-purple-500 rounded-full -translate-x-1/2 -translate-y-1/2" />
+                      <div className="absolute bottom-4 left-4 bg-background/80 px-3 py-1 rounded-lg text-xs">
+                        Правило третей
+                      </div>
                     </div>
-                    <div className="text-center p-4">
-                      <div className="w-full aspect-square bg-secondary rounded-xl mb-4 flex items-center justify-center">
-                        <div className="text-8xl">•</div>
+
+                    <div className="relative aspect-[3/4] bg-slate-100 rounded-xl overflow-hidden">
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-32 h-32 border-2 border-purple-300 rounded-full" />
+                        <div className="absolute w-4 h-4 bg-purple-500 rounded-full" />
                       </div>
-                      <div className="font-semibold mb-2">Размер</div>
-                      <p className="text-sm text-muted-foreground">
-                        Сделайте элемент крупнее
-                      </p>
+                      <div className="absolute bottom-4 left-4 bg-background/80 px-3 py-1 rounded-lg text-xs">
+                        Центральная
+                      </div>
                     </div>
-                    <div className="text-center p-4">
-                      <div className="w-full aspect-square bg-secondary rounded-xl mb-4 flex items-center justify-center relative">
-                        <div className="w-16 h-16 bg-accent/20 rounded-full animate-pulse absolute" />
-                        <div className="w-12 h-12 bg-accent/40 rounded-full animate-pulse absolute" />
-                        <div className="w-8 h-8 bg-accent rounded-full absolute" />
+
+                    <div className="relative aspect-[3/4] bg-slate-100 rounded-xl overflow-hidden">
+                      <div className="absolute inset-0">
+                        <div className="absolute top-4 left-4 w-20 h-20 bg-purple-200 rounded-lg" />
+                        <div className="absolute top-1/3 left-1/3 w-16 h-16 bg-purple-300 rounded-lg" />
+                        <div className="absolute bottom-8 right-8 w-24 h-24 bg-purple-500 rounded-lg" />
+                        <div className="absolute top-0 left-0 w-full h-full">
+                          <svg className="w-full h-full">
+                            <line x1="0" y1="0" x2="100%" y2="100%" stroke="rgb(168, 85, 247)" strokeWidth="2" strokeDasharray="4" />
+                          </svg>
+                        </div>
                       </div>
-                      <div className="font-semibold mb-2">Пространство</div>
-                      <p className="text-sm text-muted-foreground">
-                        Окружите свободным местом
-                      </p>
+                      <div className="absolute bottom-4 left-4 bg-background/80 px-3 py-1 rounded-lg text-xs">
+                        Диагональная
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -312,75 +178,78 @@ export default function Composition() {
                 animate={{ opacity: 1 }}
                 className="glass-effect rounded-3xl p-8"
               >
-                <h2 className="mb-4">Направляющие</h2>
+                <h2 className="mb-4">Направляющие и сетки</h2>
                 <p className="text-lg mb-8">
-                  Направляющие помогают выравнивать элементы и создавать структурированные композиции. 
-                  Они обеспечивают визуальный порядок и профессиональный вид.
+                  Направляющие помогают выравнивать элементы и создавать структурированный дизайн
                 </p>
 
-                <div className="grid md:grid-cols-2 gap-8 mb-12">
-                  <div className="bg-secondary/50 rounded-2xl p-6">
-                    <h3 className="mb-4">Сетка 12 колонок</h3>
-                    <div className="aspect-[3/4] bg-background rounded-lg relative overflow-hidden p-4">
-                      <div className="grid grid-cols-12 gap-1 h-full">
-                        {Array.from({ length: 12 }).map((_, i) => (
-                          <div key={i} className="bg-accent/10" />
-                        ))}
+                <div className="bg-background/50 rounded-2xl p-8 mb-8">
+                  <h3 className="mb-6">Зачем нужны направляющие:</h3>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="flex items-start gap-3">
+                      <Icon name="AlignLeft" size={24} className="text-purple-500 flex-shrink-0 mt-1" />
+                      <div>
+                        <p className="font-semibold mb-1">Выравнивание</p>
+                        <p className="text-sm text-muted-foreground">
+                          Все элементы выровнены по единой системе
+                        </p>
                       </div>
                     </div>
-                    <p className="text-sm text-muted-foreground mt-4">
-                      Стандартная сетка для веб и мобильных макетов
-                    </p>
-                  </div>
-
-                  <div className="bg-secondary/50 rounded-2xl p-6">
-                    <h3 className="mb-4">Модульная сетка</h3>
-                    <div className="aspect-[3/4] bg-background rounded-lg relative overflow-hidden p-4">
-                      <div className="grid grid-cols-4 grid-rows-6 gap-2 h-full">
-                        {Array.from({ length: 24 }).map((_, i) => (
-                          <div key={i} className="bg-accent/10 rounded" />
-                        ))}
+                    <div className="flex items-start gap-3">
+                      <Icon name="Grid3x3" size={24} className="text-pink-500 flex-shrink-0 mt-1" />
+                      <div>
+                        <p className="font-semibold mb-1">Структура</p>
+                        <p className="text-sm text-muted-foreground">
+                          Создание четкой иерархии информации
+                        </p>
                       </div>
                     </div>
-                    <p className="text-sm text-muted-foreground mt-4">
-                      Позволяет создавать сложные композиции с ритмом
-                    </p>
+                    <div className="flex items-start gap-3">
+                      <Icon name="Maximize2" size={24} className="text-purple-500 flex-shrink-0 mt-1" />
+                      <div>
+                        <p className="font-semibold mb-1">Отступы</p>
+                        <p className="text-sm text-muted-foreground">
+                          Контроль расстояний между элементами
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Icon name="Layers" size={24} className="text-pink-500 flex-shrink-0 mt-1" />
+                      <div>
+                        <p className="font-semibold mb-1">Консистентность</p>
+                        <p className="text-sm text-muted-foreground">
+                          Единообразие в серии карточек
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
+                <div className="glass-effect rounded-2xl p-6 bg-slate-50 mb-8">
+                  <h3 className="mb-4">Модульная сетка в действии</h3>
+                  <ImageCarousel images={['1', '2', '3']} aspectRatio="16/9" />
+                </div>
+
                 <div className="bg-background/50 rounded-2xl p-8">
-                  <h3 className="mb-6">Зачем нужны направляющие:</h3>
-                  <div className="space-y-6">
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center flex-shrink-0">
-                        ✓
-                      </div>
+                  <h3 className="mb-6">Практический совет:</h3>
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-3">
+                      <Icon name="Lightbulb" size={24} className="text-purple-500 flex-shrink-0 mt-1" />
                       <div>
-                        <div className="font-semibold mb-2">Точное выравнивание</div>
-                        <p className="text-sm text-muted-foreground">
-                          Элементы располагаются на одной линии, создавая ощущение порядка
+                        <p className="font-semibold mb-1">В Figma</p>
+                        <p className="text-muted-foreground">
+                          Используйте Layout Grid (Shift + G) для создания сетки. 
+                          Настройте количество колонок, размер отступов и полей.
                         </p>
                       </div>
                     </div>
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center flex-shrink-0">
-                        ✓
-                      </div>
+                    <div className="flex items-start gap-3">
+                      <Icon name="Ruler" size={24} className="text-pink-500 flex-shrink-0 mt-1" />
                       <div>
-                        <div className="font-semibold mb-2">Консистентность</div>
-                        <p className="text-sm text-muted-foreground">
-                          Одинаковые отступы и размеры во всем макете
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center flex-shrink-0">
-                        ✓
-                      </div>
-                      <div>
-                        <div className="font-semibold mb-2">Скорость работы</div>
-                        <p className="text-sm text-muted-foreground">
-                          Не нужно каждый раз высчитывать расстояния вручную
+                        <p className="font-semibold mb-1">Направляющие</p>
+                        <p className="text-muted-foreground">
+                          Протягивайте направляющие с линеек (View → Rulers или Ctrl/Cmd + R) 
+                          для точного выравнивания элементов.
                         </p>
                       </div>
                     </div>
@@ -391,6 +260,7 @@ export default function Composition() {
           </Tabs>
         </div>
       </main>
+      {(user?.hasSubscription || user?.isAdmin) && <ProgressBar />}
     </div>
   );
 }

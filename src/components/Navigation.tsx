@@ -20,7 +20,7 @@ export default function Navigation() {
     <motion.header
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="glass-effect sticky top-0 z-50 mb-8"
+      className="glass-effect fixed top-0 left-0 right-0 z-50"
     >
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <Link to="/" className="text-3xl font-black tracking-tight">
@@ -46,16 +46,19 @@ export default function Navigation() {
           <Link to="/composition" className="text-sm hover:text-accent transition-colors">
             Композиция
           </Link>
+          <Link to="/video-tutorials" className="text-sm hover:text-accent transition-colors">
+            Видеоуроки
+          </Link>
         </nav>
 
         <div className="flex items-center gap-4">
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild className="lg:hidden">
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" className="hover:bg-purple-100 transition-colors">
                 <Icon name="Menu" size={24} />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+            <SheetContent side="right" className="w-[280px] sm:w-[350px] bg-background/95 backdrop-blur-xl border-l border-purple-200">
               <nav className="flex flex-col gap-4 mt-8">
                 <Link 
                   to="/" 
@@ -98,6 +101,13 @@ export default function Navigation() {
                   onClick={() => setIsOpen(false)}
                 >
                   Композиция
+                </Link>
+                <Link 
+                  to="/video-tutorials" 
+                  className="text-lg hover:text-accent transition-colors py-2"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Видеоуроки
                 </Link>
                 {!user?.hasSubscription && !user?.isAdmin && (
                   <Button asChild className="mt-4">

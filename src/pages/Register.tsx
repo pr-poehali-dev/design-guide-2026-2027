@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuth } from '@/contexts/AuthContext';
+import Navigation from '@/components/Navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -50,14 +51,16 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden flex items-center justify-center">
+    <div className="min-h-screen relative overflow-hidden">
       <div className="fixed inset-0 -z-10 animated-gradient" />
+      <Navigation />
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="w-full max-w-md px-6"
-      >
+      <main className="pt-32 pb-20 flex items-center justify-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="w-full max-w-md px-6"
+        >
         <div className="glass-effect rounded-3xl p-8">
           <div className="text-center mb-8">
             <Link to="/" className="text-3xl font-black inline-block mb-2">
@@ -142,7 +145,8 @@ export default function Register() {
             </p>
           </div>
         </div>
-      </motion.div>
+        </motion.div>
+      </main>
     </div>
   );
 }

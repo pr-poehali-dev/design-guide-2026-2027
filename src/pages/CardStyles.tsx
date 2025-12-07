@@ -2,7 +2,9 @@ import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
+import { useProgress } from '@/contexts/ProgressContext';
 import Navigation from '@/components/Navigation';
+import ProgressBar from '@/components/ProgressBar';
 
 const styles = [
   {
@@ -58,12 +60,19 @@ const styles = [
 export default function CardStyles() {
   const { user } = useAuth();
   const navigate = useNavigate();
+  const { markSectionAsVisited } = useProgress();
   
   useEffect(() => {
     if (!user?.hasSubscription && !user?.isAdmin) {
       navigate('/subscribe');
     }
   }, [user, navigate]);
+
+  useEffect(() => {
+    if (user?.hasSubscription || user?.isAdmin) {
+      markSectionAsVisited('card-styles');
+    }
+  }, [user, markSectionAsVisited]);
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -187,6 +196,7 @@ export default function CardStyles() {
           </motion.div>
         </div>
       </main>
+      {(user?.hasSubscription || user?.isAdmin) && <ProgressBar />}
     </div>
   );
 }

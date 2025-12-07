@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
+import { ProgressProvider } from "./contexts/ProgressContext";
 import Index from "./pages/Index";
 import Home from "./pages/Home";
 import Typography from "./pages/Typography";
@@ -14,6 +15,7 @@ import CardStyles from "./pages/CardStyles";
 import Theory from "./pages/Theory";
 import Contacts from "./pages/Contacts";
 import Search from "./pages/Search";
+import VideoTutorials from "./pages/VideoTutorials";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Subscribe from "./pages/Subscribe";
@@ -26,11 +28,12 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <AuthProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
+      <ProgressProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/sections" element={<Index />} />
             <Route path="/typography" element={<Typography />} />
@@ -40,6 +43,7 @@ const App = () => (
             <Route path="/theory" element={<Theory />} />
             <Route path="/contacts" element={<Contacts />} />
             <Route path="/search" element={<Search />} />
+            <Route path="/video-tutorials" element={<VideoTutorials />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/subscribe" element={<Subscribe />} />
@@ -49,7 +53,8 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
-      </TooltipProvider>
+        </TooltipProvider>
+      </ProgressProvider>
     </AuthProvider>
   </QueryClientProvider>
 );

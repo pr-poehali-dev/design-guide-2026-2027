@@ -2,12 +2,17 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
+import { useProgress } from '@/contexts/ProgressContext';
 import Navigation from '@/components/Navigation';
+import ProgressBar from '@/components/ProgressBar';
+import Icon from '@/components/ui/icon';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
+import ImageCarousel from '@/components/ImageCarousel';
 
 export default function Coloristics() {
   const { user } = useAuth();
+  const { markSectionAsVisited } = useProgress();
   const navigate = useNavigate();
   
   useEffect(() => {
@@ -15,6 +20,18 @@ export default function Coloristics() {
       navigate('/subscribe');
     }
   }, [user, navigate]);
+
+  useEffect(() => {
+    if (user?.hasSubscription || user?.isAdmin) {
+      markSectionAsVisited('coloristics');
+    }
+  }, [user, markSectionAsVisited]);
+
+  useEffect(() => {
+    if (user?.hasSubscription || user?.isAdmin) {
+      markSectionAsVisited('coloristics');
+    }
+  }, [user, markSectionAsVisited]);
 
   const [selectedBg, setSelectedBg] = useState('#ffffff');
   const [selectedText, setSelectedText] = useState('#000000');
@@ -24,26 +41,19 @@ export default function Coloristics() {
     { name: 'Монохромная', colors: ['#1a1a2e', '#16213e', '#0f3460', '#533483', '#e94560'] },
     { name: 'Комплементарная', colors: ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7'] },
     { name: 'Триадная', colors: ['#f38181', '#78e08f', '#786fa6', '#f8b500', '#63cdda'] },
-    { name: 'Аналоговая', colors: ['#667eea', '#764ba2', '#f093fb', '#4facfe', '#00f2fe'] },
   ];
 
   const commonMistakes = [
     {
       title: 'Неоновые цвета',
-      wrong: { bg: '#00ff00', text: '#ff00ff' },
-      right: { bg: '#10b981', text: '#8b5cf6' },
       description: 'Слишком яркие неоновые цвета режут глаза',
     },
     {
       title: 'Низкий контраст',
-      wrong: { bg: '#cccccc', text: '#bbbbbb' },
-      right: { bg: '#ffffff', text: '#1a1a1a' },
       description: 'Текст должен хорошо читаться на фоне',
     },
     {
       title: 'Грязные цвета',
-      wrong: { bg: '#7a6f5d', text: '#8b7e6a' },
-      right: { bg: '#f8f9fa', text: '#212529' },
       description: 'Избегайте мутных, невыразительных оттенков',
     },
   ];
@@ -88,37 +98,9 @@ export default function Coloristics() {
                   Цвета влияют на эмоции и восприятие информации.
                 </p>
 
-                <div className="grid md:grid-cols-3 gap-6 mb-12">
-                  <div className="p-6 bg-secondary/50 rounded-2xl">
-                    <div className="w-full aspect-square bg-gradient-to-br from-red-500 via-yellow-500 to-blue-500 rounded-xl mb-4" />
-                    <h3 className="mb-2">Цветовой круг</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Основной инструмент для понимания взаимосвязи цветов
-                    </p>
-                  </div>
-
-                  <div className="p-6 rounded-2xl bg-slate-50">
-                    <div className="grid grid-cols-3 gap-2 mb-4">
-                      <div className="aspect-square bg-red-500 rounded-lg" />
-                      <div className="aspect-square bg-blue-500 rounded-lg" />
-                      <div className="aspect-square bg-yellow-500 rounded-lg" />
-                    </div>
-                    <h3 className="mb-2">Первичные цвета</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Красный, синий и желтый — основа всех остальных цветов
-                    </p>
-                  </div>
-
-                  <div className="p-6 bg-secondary/50 rounded-2xl">
-                    <div className="grid grid-cols-3 gap-2 mb-4">
-                      <div className="aspect-square bg-orange-500 rounded-lg" />
-                      <div className="aspect-square bg-green-500 rounded-lg" />
-                      <div className="aspect-square bg-purple-500 rounded-lg" />
-                    </div>
-                    <h3 className="mb-2">Вторичные цвета</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Получаются смешиванием первичных цветов
-                    </p>
+                <div className="flex justify-center mb-12">
+                  <div className="w-64 h-64">
+                    <div className="w-full aspect-square rounded-full bg-gradient-to-br from-red-500 via-yellow-500 via-green-500 via-cyan-500 via-blue-500 via-purple-500 to-red-500 mb-4" />
                   </div>
                 </div>
 
@@ -148,6 +130,38 @@ export default function Coloristics() {
                     </div>
                   </div>
                 </div>
+
+                <h3 className="mb-6 mt-8">Цвет влияет на восприятие</h3>
+                <p className="text-lg mb-8">Правильно подобранные цвета влияют на решение о покупке</p>
+
+                <div className="space-y-8">
+                  <div className="glass-effect rounded-2xl p-6">
+                    <h4 className="font-semibold mb-4 flex items-center gap-2">
+                      <Icon name="Laptop" size={20} />
+                      Электроника
+                    </h4>
+                    <p className="text-muted-foreground mb-4">Синий, фиолетовый, чёрный, серый → доверие и технологичность</p>
+                    <ImageCarousel images={['1', '2', '3']} aspectRatio="3/4" />
+                  </div>
+
+                  <div className="glass-effect rounded-2xl p-6">
+                    <h4 className="font-semibold mb-4 flex items-center gap-2">
+                      <Icon name="Leaf" size={20} />
+                      Натуральные товары
+                    </h4>
+                    <p className="text-muted-foreground mb-4">Зелёный, бежевый, коричневый → экологичность и чистота</p>
+                    <ImageCarousel images={['1', '2', '3']} aspectRatio="3/4" />
+                  </div>
+
+                  <div className="glass-effect rounded-2xl p-6">
+                    <h4 className="font-semibold mb-4 flex items-center gap-2">
+                      <Icon name="Gamepad2" size={20} />
+                      Игрушки
+                    </h4>
+                    <p className="text-muted-foreground mb-4">Яркие основные цвета или пастель → радость и дружелюбие</p>
+                    <ImageCarousel images={['1', '2', '3']} aspectRatio="3/4" />
+                  </div>
+                </div>
               </motion.div>
             </TabsContent>
 
@@ -166,20 +180,13 @@ export default function Coloristics() {
                   {colorSchemes.map((scheme) => (
                     <div key={scheme.name} className="bg-secondary/50 rounded-2xl p-6">
                       <h3 className="mb-4">{scheme.name}</h3>
-                      <div className="grid grid-cols-5 gap-4 mb-4">
+                      <div className="grid grid-cols-5 gap-4">
                         {scheme.colors.map((color) => (
                           <div
                             key={color}
-                            className="aspect-square rounded-xl hover-lift cursor-pointer bg-violet-500"
+                            className="aspect-square rounded-xl hover-lift cursor-pointer"
                             style={{ backgroundColor: color }}
                           />
-                        ))}
-                      </div>
-                      <div className="flex flex-wrap gap-2">
-                        {scheme.colors.map((color) => (
-                          <code key={color} className="text-xs px-2 py-1 bg-background rounded">
-                            {color}
-                          </code>
                         ))}
                       </div>
                     </div>
@@ -187,50 +194,20 @@ export default function Coloristics() {
                 </div>
 
                 <div className="bg-background/50 rounded-2xl p-8 mt-8">
-                  <h3 className="mb-6">Как выбрать схему:</h3>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="flex items-start gap-4">
-                      <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center font-bold flex-shrink-0">
-                        1
-                      </div>
+                  <h3 className="mb-6">Лайфхаки для работы с цветом:</h3>
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-3">
+                      <Icon name="Palette" size={24} className="text-purple-500 flex-shrink-0 mt-1" />
                       <div>
-                        <div className="font-semibold mb-1">Монохромная — для элегантности</div>
-                        <p className="text-sm text-muted-foreground">
-                          Оттенки одного цвета создают спокойный профессиональный вид
-                        </p>
+                        <p className="font-semibold mb-1">Цветовой круг</p>
+                        <p className="text-muted-foreground">При подборе цветов пользуйтесь цветовым кругом для гармоничных сочетаний</p>
                       </div>
                     </div>
-                    <div className="flex items-start gap-4">
-                      <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center font-bold flex-shrink-0">
-                        2
-                      </div>
+                    <div className="flex items-start gap-3">
+                      <Icon name="Globe" size={24} className="text-pink-500 flex-shrink-0 mt-1" />
                       <div>
-                        <div className="font-semibold mb-1">Комплементарная — для контраста</div>
-                        <p className="text-sm text-muted-foreground">
-                          Противоположные цвета привлекают максимум внимания
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-4">
-                      <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center font-bold flex-shrink-0">
-                        3
-                      </div>
-                      <div>
-                        <div className="font-semibold mb-1">Триадная — для баланса</div>
-                        <p className="text-sm text-muted-foreground">
-                          Три равноудаленных цвета создают живую гармонию
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-4">
-                      <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center font-bold flex-shrink-0">
-                        4
-                      </div>
-                      <div>
-                        <div className="font-semibold mb-1">Аналоговая — для мягкости</div>
-                        <p className="text-sm text-muted-foreground">
-                          Соседние цвета на круге выглядят естественно
-                        </p>
+                        <p className="font-semibold mb-1">Готовые схемы</p>
+                        <p className="text-muted-foreground">Используйте сайты для поиска готовых цветовых схем (Adobe Color, Coolors, Paletton)</p>
                       </div>
                     </div>
                   </div>
@@ -244,88 +221,26 @@ export default function Coloristics() {
                 animate={{ opacity: 1 }}
                 className="glass-effect rounded-3xl p-8"
               >
-                <h2 className="mb-4">Распространенные ошибки</h2>
+                <h2 className="mb-4">Частые ошибки</h2>
                 <p className="text-lg mb-8">
-                  Учитесь на чужих ошибках — избегайте этих частых проблем в колористике
+                  Изучите типичные ошибки, чтобы не повторять их в своих работах
                 </p>
 
-                <div className="space-y-6">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {commonMistakes.map((mistake) => (
-                    <div key={mistake.title} className="bg-secondary/50 rounded-2xl p-6">
+                    <div key={mistake.title} className="glass-effect rounded-2xl p-6">
                       <h3 className="mb-4">{mistake.title}</h3>
-                      <p className="text-sm text-muted-foreground mb-6">{mistake.description}</p>
-                      
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div>
-                          <div className="text-sm font-semibold text-destructive mb-2 flex items-center gap-2">
-                            <span>❌</span> Неправильно
-                          </div>
-                          <div
-                            className="aspect-[3/2] rounded-xl p-6 flex items-center justify-center"
-                            style={{ backgroundColor: mistake.wrong.bg }}
-                          >
-                            <div
-                              className="text-2xl font-bold"
-                              style={{ color: mistake.wrong.text }}
-                            >Пример текста</div>
-                          </div>
-                          <div className="mt-2 flex gap-2">
-                            <code className="text-xs px-2 py-1 bg-background rounded">
-                              {mistake.wrong.bg}
-                            </code>
-                            <code className="text-xs px-2 py-1 bg-background rounded">
-                              {mistake.wrong.text}
-                            </code>
-                          </div>
-                        </div>
-
-                        <div>
-                          <div className="text-sm font-semibold text-green-600 mb-2 flex items-center gap-2">
-                            <span>✅</span> Правильно
-                          </div>
-                          <div
-                            className="aspect-[3/2] rounded-xl p-6 flex items-center justify-center"
-                            style={{ backgroundColor: mistake.right.bg }}
-                          >
-                            <div
-                              className="text-2xl font-bold bg-transparent"
-                              style={{ color: mistake.right.text }}
-                            >Пример текста</div>
-                          </div>
-                          <div className="mt-2 flex gap-2">
-                            <code className="text-xs px-2 py-1 bg-background rounded">
-                              {mistake.right.bg}
-                            </code>
-                            <code className="text-xs px-2 py-1 bg-background rounded">
-                              {mistake.right.text}
-                            </code>
-                          </div>
-                        </div>
+                      <p className="text-sm text-muted-foreground mb-4">{mistake.description}</p>
+                      <ImageCarousel images={['wrong', 'right']} aspectRatio="3/4" />
+                      <div className="mt-3 flex items-center gap-2 text-sm">
+                        <Icon name="X" size={16} className="text-red-500" />
+                        <span className="text-muted-foreground">Неправильно</span>
+                        <Icon name="ArrowRight" size={16} className="mx-2" />
+                        <Icon name="Check" size={16} className="text-green-500" />
+                        <span className="text-muted-foreground">Правильно</span>
                       </div>
                     </div>
                   ))}
-                </div>
-
-                <div className="bg-background/50 rounded-2xl p-8 mt-8">
-                  <h3 className="mb-4">Золотые правила колористики:</h3>
-                  <ul className="space-y-3 text-muted-foreground">
-                    <li className="flex items-start gap-3">
-                      <span className="text-accent">•</span>
-                      <span>Не используйте более 3 цветов в одном дизайне, чтобы не создавать визуальный шум</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-accent">•</span>
-                      <span>Проверяйте контраст текста и иконок — они должны быть хорошо читаемы</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-accent">•</span>
-                      <span>Избегайте чистых насыщенных цветов для больших площадей</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-accent">•</span>
-                      <span>Учитывайте психологию цвета при выборе палитры</span>
-                    </li>
-                  </ul>
                 </div>
               </motion.div>
             </TabsContent>
@@ -336,102 +251,104 @@ export default function Coloristics() {
                 animate={{ opacity: 1 }}
                 className="glass-effect rounded-3xl p-8"
               >
-                <h2 className="mb-4">Интерактивная практика</h2>
+                <h2 className="mb-4">Практика</h2>
                 <p className="text-lg mb-8">
-                  Экспериментируйте с цветами и создайте свою карточку товара
+                  Поэкспериментируйте с цветами и посмотрите, как они влияют на дизайн карточки товара
                 </p>
 
                 <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <h3 className="mb-4">Выберите цвета:</h3>
-                    <div className="space-y-4">
-                      <div>
-                        <label className="text-sm font-medium mb-2 block">Фон</label>
-                        <div className="flex gap-2">
-                          {['#ffffff', '#f8f9fa', '#e9ecef', '#1a1a2e', '#16213e'].map((color) => (
-                            <button
-                              key={color}
-                              onClick={() => setSelectedBg(color)}
-                              className={`w-12 h-12 rounded-xl hover-lift ${
-                                selectedBg === color ? 'ring-2 ring-accent ring-offset-2' : ''
-                              }`}
-                              style={{ backgroundColor: color }}
-                            />
-                          ))}
-                        </div>
-                      </div>
-
-                      <div>
-                        <label className="text-sm font-medium mb-2 block">Текст</label>
-                        <div className="flex gap-2">
-                          {['#000000', '#212529', '#495057', '#ffffff', '#f8f9fa'].map((color) => (
-                            <button
-                              key={color}
-                              onClick={() => setSelectedText(color)}
-                              className={`w-12 h-12 rounded-xl hover-lift ${
-                                selectedText === color ? 'ring-2 ring-accent ring-offset-2' : ''
-                              }`}
-                              style={{ backgroundColor: color }}
-                            />
-                          ))}
-                        </div>
-                      </div>
-
-                      <div>
-                        <label className="text-sm font-medium mb-2 block">Акцент</label>
-                        <div className="flex gap-2">
-                          {['#8b5cf6', '#3b82f6', '#10b981', '#f59e0b', '#ef4444'].map((color) => (
-                            <button
-                              key={color}
-                              onClick={() => setSelectedAccent(color)}
-                              className={`w-12 h-12 rounded-xl hover-lift ${
-                                selectedAccent === color ? 'ring-2 ring-accent ring-offset-2' : ''
-                              }`}
-                              style={{ backgroundColor: color }}
-                            />
-                          ))}
-                        </div>
+                  <div className="space-y-6">
+                    <div>
+                      <label className="block mb-3 font-semibold">Фон карточки</label>
+                      <div className="grid grid-cols-4 gap-3">
+                        {['#ffffff', '#f3f4f6', '#1f2937', '#8b5cf6'].map((color) => (
+                          <button
+                            key={color}
+                            onClick={() => setSelectedBg(color)}
+                            className={`aspect-square rounded-xl hover-lift ${
+                              selectedBg === color ? 'ring-4 ring-purple-500' : ''
+                            }`}
+                            style={{ backgroundColor: color }}
+                          />
+                        ))}
                       </div>
                     </div>
+
+                    <div>
+                      <label className="block mb-3 font-semibold">Цвет текста</label>
+                      <div className="grid grid-cols-4 gap-3">
+                        {['#000000', '#4b5563', '#ffffff', '#f3f4f6'].map((color) => (
+                          <button
+                            key={color}
+                            onClick={() => setSelectedText(color)}
+                            className={`aspect-square rounded-xl hover-lift ${
+                              selectedText === color ? 'ring-4 ring-purple-500' : ''
+                            }`}
+                            style={{ backgroundColor: color }}
+                          />
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block mb-3 font-semibold">Акцентный цвет</label>
+                      <div className="grid grid-cols-4 gap-3">
+                        {['#8b5cf6', '#ec4899', '#10b981', '#f59e0b'].map((color) => (
+                          <button
+                            key={color}
+                            onClick={() => setSelectedAccent(color)}
+                            className={`aspect-square rounded-xl hover-lift ${
+                              selectedAccent === color ? 'ring-4 ring-purple-500' : ''
+                            }`}
+                            style={{ backgroundColor: color }}
+                          />
+                        ))}
+                      </div>
+                    </div>
+
+                    <Button
+                      onClick={() => {
+                        setSelectedBg('#ffffff');
+                        setSelectedText('#000000');
+                        setSelectedAccent('#8b5cf6');
+                      }}
+                      variant="outline"
+                      className="w-full"
+                    >
+                      Сбросить
+                    </Button>
                   </div>
 
-                  <div>
-                    <h3 className="mb-4">Предпросмотр карточки:</h3>
-                    <div
-                      className="aspect-[3/4] rounded-2xl p-6 flex flex-col"
-                      style={{ backgroundColor: selectedBg }}
+                  <div
+                    className="rounded-2xl p-8 transition-colors"
+                    style={{ backgroundColor: selectedBg }}
+                  >
+                    <div className="aspect-square bg-slate-200 rounded-xl mb-4" />
+                    <h3
+                      className="text-2xl font-bold mb-2"
+                      style={{ color: selectedText }}
                     >
-                      <div className="flex-1 bg-muted/20 rounded-xl mb-4" />
-                      <h4
-                        className="text-2xl font-bold mb-2"
-                        style={{ color: selectedText }}
+                      Название товара
+                    </h3>
+                    <p
+                      className="mb-4 opacity-80"
+                      style={{ color: selectedText }}
+                    >
+                      Краткое описание основных характеристик и преимуществ товара
+                    </p>
+                    <div className="flex items-center gap-4">
+                      <span
+                        className="text-3xl font-bold"
+                        style={{ color: selectedAccent }}
                       >
-                        Название товара
-                      </h4>
-                      <p
-                        className="text-sm mb-4 opacity-70"
-                        style={{ color: selectedText }}
+                        1 299 ₽
+                      </span>
+                      <Button
+                        style={{ backgroundColor: selectedAccent }}
+                        className="text-white"
                       >
-                        Описание товара и его основные характеристики
-                      </p>
-                      <div className="flex items-center justify-between">
-                        <div
-                          className="text-xl font-bold"
-                          style={{ color: selectedText }}
-                        >
-                          2 990 ₽
-                        </div>
-                        <Button
-                          size="sm"
-                          className="hover-lift"
-                          style={{ 
-                            backgroundColor: selectedAccent,
-                            color: '#ffffff'
-                          }}
-                        >
-                          Купить
-                        </Button>
-                      </div>
+                        Купить
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -440,6 +357,7 @@ export default function Coloristics() {
           </Tabs>
         </div>
       </main>
+      {(user?.hasSubscription || user?.isAdmin) && <ProgressBar />}
     </div>
   );
 }

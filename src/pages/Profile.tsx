@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
+import { useProgress } from '@/contexts/ProgressContext';
 import Navigation from '@/components/Navigation';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
@@ -12,10 +13,12 @@ const sections = [
   { id: 'coloristics', title: 'Колористика', icon: 'Palette' },
   { id: 'card-styles', title: 'Стили карточек', icon: 'Grid3x3' },
   { id: 'theory', title: 'Теория дизайна', icon: 'BookOpen' },
+  { id: 'video-tutorials', title: 'Видеоуроки', icon: 'Video' },
 ];
 
 export default function Profile() {
   const { user, logout, purchaseSubscription } = useAuth();
+  const { visitedSections, getProgress } = useProgress();
   const navigate = useNavigate();
   const [mounted, setMounted] = useState(false);
 
@@ -29,7 +32,7 @@ export default function Profile() {
 
   if (!user) return null;
 
-  const totalProgress = Object.values(user.progress).reduce((a, b) => a + b, 0) / sections.length || 0;
+  const totalProgress = getProgress();
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -38,7 +41,7 @@ export default function Profile() {
       <div className="relative z-10">
         <Navigation />
 
-        <main className="container mx-auto px-4 py-12">
+        <main className="pt-32 pb-20 container mx-auto px-4">
           <div
             className={`max-w-4xl mx-auto transition-all duration-1000 ${
               mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
@@ -95,7 +98,7 @@ export default function Profile() {
 
               <div className="space-y-4">
                 {sections.map((section) => {
-                  const progress = user.progress[section.id] || 0;
+                  const isVisited = visitedSections.includes(section.id);
                   
                   return (
                     <div
@@ -109,16 +112,19 @@ export default function Profile() {
                         }
                       }}
                     >
-                      <div className="flex items-center gap-4 mb-3">
+                      <div className="flex items-center gap-4">
                         <div className="p-2 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500">
                           <Icon name={section.icon} size={20} className="text-white" />
                         </div>
                         <div className="flex-1">
                           <h3 className="font-semibold">{section.title}</h3>
                         </div>
-                        <span className="text-sm font-bold">{Math.round(progress)}%</span>
+                        {isVisited ? (
+                          <Icon name="CheckCircle" size={24} className="text-green-500" />
+                        ) : (
+                          <Icon name="Circle" size={24} className="text-muted-foreground" />
+                        )}
                       </div>
-                      <Progress value={progress} />
                     </div>
                   );
                 })}

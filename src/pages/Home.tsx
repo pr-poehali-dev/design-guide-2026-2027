@@ -81,10 +81,8 @@ export default function Home() {
             }`}
           >
             <div className="text-center mb-12">
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                Освойте дизайн для маркетплейсов.<br />
-                Быстро. Легко.
-              </h1>
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight bg-gradient-to-br from-purple-500 to-pink-500 py-3">Дизайн карточек для маркетплейсов
+Быстро. Легко.</h1>
             </div>
 
             <div className="glass-effect p-8 md:p-12 rounded-3xl bg-slate-50 mb-12">
@@ -95,24 +93,16 @@ export default function Home() {
                   доходом и возможностью удаленной работы.
                 </p>
                 
-                <p>
-                  <strong>Наш обучающий сайт-гид</strong> создан для тех, кто хочет освоить новую профессию с нуля или 
-                  систематизировать имеющиеся знания. Мы собрали весь необходимый материал, структурировали его по темам 
-                  и подготовили практические примеры.
-                </p>
+                <p>Наш обучающий сайт-гид создан для тех, кто хочет освоить новую профессию с нуля или систематизировать имеющиеся знания. </p>
                 
-                <p>
-                  Вы научитесь создавать карточки, которые привлекают внимание покупателей, выделяются среди конкурентов 
-                  и увеличивают конверсию. Каждый раздел содержит теоретическую базу, примеры работ и практические 
-                  рекомендации от действующих специалистов.
-                </p>
+                <p>Вы научитесь создавать карточки, которые привлекают внимание покупателей, выделяются среди конкурентов и увеличивают конверсию. </p>
                 
                 <div className="mt-8 p-6 bg-background/60 rounded-2xl">
                   <div className="grid md:grid-cols-3 gap-6">
                     <div className="flex items-start gap-3">
                       <Icon name="CheckCircle" size={24} className="text-purple-500 flex-shrink-0 mt-1" />
                       <div>
-                        <p className="font-medium mb-1">Только нужный материал</p>
+                        <p className="font-medium mb-1 py-0">Только нужный материал</p>
                         <p className="text-sm text-muted-foreground">Без лишней воды, конкретно и по делу</p>
                       </div>
                     </div>
@@ -169,7 +159,7 @@ export default function Home() {
                   onClick={() => handleSectionClick(section.id)}
                 >
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="p-3 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500">
+                    <div className="p-3 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 py-3">
                       <Icon name={section.icon} size={24} className="text-white" />
                     </div>
                     <div className="flex-1">

@@ -49,7 +49,7 @@ export default function Subscribe() {
             className="text-center mb-16"
           >
             <h1 className="mb-6">Купить подписку</h1>
-            <p className="text-xl my-0 text-[#414144] font-normal">Навсегда получите доступ к материалам курса – узнайте ключевые аспекты в создании качественного дизайна карточек для маркетплейсов</p>
+            <p className="text-xl my-0 text-[#414144] font-normal">Навсегда получите доступ к материалам сайта – узнайте ключевые аспекты в создании качественного дизайна карточек для маркетплейсов</p>
           </motion.div>
 
           <motion.div

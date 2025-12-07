@@ -283,16 +283,12 @@ export default function Typography() {
                 className="glass-effect rounded-3xl p-8"
               >
                 <h2 className="mb-4">Виды шрифтов</h2>
-                <p className="text-lg mb-8">Используются для разных целей и создают разное настроение
-От правильно подобранных шрифтов зависит всё восприятие информации со слайда</p>
+                <p className="text-lg mb-8">Используются для разных целей и создают разное настроение. От правильно подобранных шрифтов зависит всё восприятие информации со слайда</p>
 
                 <div className="space-y-8">
                   <div className="rounded-2xl p-8 bg-[#ffffff]">
                     <h3 className="mb-4">Гротески (Sans-serif)</h3>
-                    <p className="text-muted-foreground mb-6">Шрифты без засечек. Основной выбор для современной инфографики.
-Чистый, нейтральный, хорошо читаемый в мелких размерах. Идеален для основного текста, пояснений, плашек
-(I
-</p>
+                    <p className="text-muted-foreground mb-6">Эти шрифты без засечек — «рабочие лошадки» и ваш основной выбор. Они должны быть разборчивыми в любом размере и иметь множество начертаний для создания иерархии (Inter, Manrope, Montserrat, Onest, Gilroy)</p>
                     <div className="text-4xl font-sans font-bold">Основной выбор</div>
                   </div>
 

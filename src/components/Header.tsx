@@ -24,7 +24,7 @@ export default function Header() {
     >
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <Link to="/" className="text-3xl font-black tracking-tight">
-          <span className="outline-text">Designeasy</span>
+          <span className="outline-text text-[#000000] font-medium">Designeasy</span>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-8">

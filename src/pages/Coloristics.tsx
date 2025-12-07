@@ -311,11 +311,11 @@ export default function Coloristics() {
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-start gap-3">
                       <span className="text-accent">•</span>
-                      <span>Используйте не более 3-5 цветов в одном дизайне</span>
+                      <span>Не используйте более 3 цветов в одном дизайне, чтобы не создавать визуальный шум</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="text-accent">•</span>
-                      <span>Проверяйте контраст текста — он должен быть минимум 4.5:1</span>
+                      <span>Проверяйте контраст текста и иконок — они должны быть хорошо читаемы</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="text-accent">•</span>

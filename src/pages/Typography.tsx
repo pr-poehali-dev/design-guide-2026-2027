@@ -231,9 +231,7 @@ export default function Typography() {
                 className="glass-effect rounded-3xl p-8"
               >
                 <h2 className="mb-4">Начертания шрифта</h2>
-                <p className="text-lg mb-8">
-                  Начертание — это жирность шрифта. Используется для создания иерархии и акцентов.
-                </p>
+                <p className="text-lg mb-8">Жирность шрифта. Используется для создания иерархии и акцентов.</p>
 
                 <div className="grid md:grid-cols-4 gap-6 mb-12">
                   <div className="text-center p-6 rounded-2xl bg-[#ffffff]">
@@ -255,7 +253,7 @@ export default function Typography() {
                 </div>
 
                 <div className="rounded-2xl p-8 bg-[#ffffffc2]">
-                  <h3 className="mb-6">Практика: выберите начертание</h3>
+                  <h3 className="mb-6 font-semibold">Интерактивный пример:</h3>
                   <div
                     className="text-5xl mb-8 text-center"
                     style={{ fontWeight: fontWeight }}

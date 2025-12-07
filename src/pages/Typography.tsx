@@ -167,13 +167,11 @@ export default function Typography() {
                 className="glass-effect rounded-3xl p-8"
               >
                 <h2 className="mb-4">Интерлиньяж</h2>
-                <p className="text-lg mb-8">
-                  Интерлиньяж — это расстояние между строками текста. 
-                  Оптимальное значение: 1.2-1.5 от размера шрифта.
-                </p>
+                <p className="text-lg mb-8">Расстояние между базовыми линиями соседних строк
+</p>
 
                 <div className="grid md:grid-cols-3 gap-6 mb-12">
-                  <div className="p-6 rounded-2xl bg-gray-200">
+                  <div className="p-6 rounded-2xl bg-[#ffffff]">
                     <div className="text-sm text-muted-foreground mb-2">Плотный (1.0)</div>
                     <div className="text-lg" style={{ lineHeight: '1.0' }}>
                       Дизайн карточек для
@@ -181,7 +179,7 @@ export default function Typography() {
                       внимания к деталям
                     </div>
                   </div>
-                  <div className="p-6 rounded-2xl bg-gray-200">
+                  <div className="p-6 rounded-2xl bg-[#ffffff]">
                     <div className="text-sm text-muted-foreground mb-2">Оптимальный (1.5)</div>
                     <div className="text-lg" style={{ lineHeight: '1.5' }}>
                       Дизайн карточек для
@@ -189,7 +187,7 @@ export default function Typography() {
                       внимания к деталям
                     </div>
                   </div>
-                  <div className="p-6 rounded-2xl bg-gray-200">
+                  <div className="p-6 rounded-2xl bg-[#ffffff]">
                     <div className="text-sm text-muted-foreground mb-2">Разреженный (2.0)</div>
                     <div className="text-lg" style={{ lineHeight: '2.0' }}>
                       Дизайн карточек для
@@ -200,7 +198,7 @@ export default function Typography() {
                 </div>
 
                 <div className="bg-background/50 rounded-2xl p-8">
-                  <h3 className="mb-6">Практика: измените интерлиньяж</h3>
+                  <h3 className="mb-6 font-semibold">Интерактивный пример:</h3>
                   <div
                     className="text-2xl mb-8"
                     style={{ lineHeight: lineHeight[0] }}

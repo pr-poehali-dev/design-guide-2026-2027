@@ -78,9 +78,7 @@ export default function CardStyles() {
             className="mb-16"
           >
             <h1 className="mb-6">Стили карточек для маркетплейсов</h1>
-            <p className="text-xl text-muted-foreground">
-              Изучите основные стили оформления карточек и выберите подходящий для вашего товара
-            </p>
+            <p className="text-xl text-[#353535]">Изучите основные стили оформления карточек и выберите подходящий для вашей категории товара</p>
           </motion.div>
 
           <div className="space-y-8">
@@ -95,7 +93,7 @@ export default function CardStyles() {
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <h2 className="mb-4">{style.name}</h2>
-                    <p className="text-lg text-muted-foreground mb-6">
+                    <p className="text-lg mb-6 text-zinc-500">
                       {style.description}
                     </p>
 
@@ -113,7 +111,7 @@ export default function CardStyles() {
                       </div>
 
                       <div className="bg-secondary/50 rounded-xl p-4">
-                        <h4 className="font-semibold mb-2">Когда использовать:</h4>
+                        <h4 className="font-semibold mb-2">Когда используется:</h4>
                         <p className="text-sm text-muted-foreground">{style.whenUse}</p>
                       </div>
                     </div>
@@ -148,9 +146,7 @@ export default function CardStyles() {
                   </div>
                   <div>
                     <div className="font-semibold mb-1">Анализ целевой аудитории</div>
-                    <p className="text-sm text-muted-foreground">
-                      Изучите, какой стиль предпочитает ваша ЦА
-                    </p>
+                    <p className="text-sm text-muted-foreground">Изучите целевую аудиторию в данной категории</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -172,9 +168,7 @@ export default function CardStyles() {
                   </div>
                   <div>
                     <div className="font-semibold mb-1">Особенности товара</div>
-                    <p className="text-sm text-muted-foreground">
-                      Выберите стиль, который лучше всего подчеркнет преимущества
-                    </p>
+                    <p className="text-sm text-muted-foreground">Выберите стиль, который лучше всего отразит ваш товар </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">

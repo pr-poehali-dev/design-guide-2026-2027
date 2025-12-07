@@ -35,9 +35,8 @@ export default function Typography() {
             className="mb-16"
           >
             <h1 className="mb-6">Типографика</h1>
-            <p className="text-xl text-muted-foreground">
-              Изучите основы типографики и научитесь работать с текстом профессионально
-            </p>
+            <p className="text-xl text-muted-foreground">Типографика – работа с текстом, один из важнейших аспектов грамотного дизайна
+Помогает быстро и понятно донести важную информацию до покупателя  </p>
           </motion.div>
 
           <Tabs defaultValue="kerning" className="space-y-12">
@@ -58,25 +57,24 @@ export default function Typography() {
                 className="glass-effect rounded-3xl p-8"
               >
                 <h2 className="mb-4">Кернинг</h2>
-                <p className="text-lg mb-8">
-                  Кернинг — это расстояние между двумя символами в слове. 
-                  Правильный кернинг делает текст более читаемым и эстетичным.
-                </p>
+                <p className="text-lg mb-8 font-normal">Кернинг —  расстояние между двумя символами в слове.
+Правильный кернинг делает текст более читаемым и эстетичным.
+</p>
 
                 <div className="grid md:grid-cols-3 gap-6 mb-12">
-                  <div className="text-center p-6 rounded-2xl bg-gray-200">
+                  <div className="text-center p-6 rounded-2xl bg-[#ffffff]">
                     <div className="text-sm text-muted-foreground mb-2">Отрицательный</div>
                     <div className="text-3xl font-bold" style={{ letterSpacing: '-0.05em' }}>
                       ПРИМЕР
                     </div>
                   </div>
-                  <div className="text-center p-6 rounded-2xl bg-gray-200">
+                  <div className="text-center p-6 rounded-2xl bg-[#ffffff]">
                     <div className="text-sm text-muted-foreground mb-2">Стандартный</div>
                     <div className="text-3xl font-bold" style={{ letterSpacing: '0' }}>
                       ПРИМЕР
                     </div>
                   </div>
-                  <div className="text-center p-6 rounded-2xl bg-gray-200">
+                  <div className="text-center p-6 rounded-2xl bg-[#ffffff]">
                     <div className="text-sm text-muted-foreground mb-2">Положительный</div>
                     <div className="text-3xl font-bold" style={{ letterSpacing: '0.1em' }}>
                       ПРИМЕР
@@ -85,7 +83,7 @@ export default function Typography() {
                 </div>
 
                 <div className="bg-background/50 rounded-2xl p-8">
-                  <h3 className="mb-6">Практика: попробуйте изменить кернинг</h3>
+                  <h3 className="mb-6 font-semibold">Интерактивный пример:</h3>
                   <div
                     className="text-5xl font-bold mb-8 text-center"
                     style={{ letterSpacing: `${kerning[0]}em` }}

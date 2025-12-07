@@ -90,9 +90,9 @@ export default function Theory() {
             className="mb-16"
           >
             <h1 className="mb-6">Теория инфографики</h1>
-            <p className="text-xl text-muted-foreground">
-              Технические требования, программы и полезные ресурсы для создания карточек
-            </p>
+            <p className="text-xl text-[#1d1d1d]">Технические требования, программы и полезные ресурсы для создания макетов
+
+Макет – набор изображений состоящий из обложки и технических слайдов товара</p>
           </motion.div>
 
           <Tabs defaultValue="sizes" className="space-y-12">

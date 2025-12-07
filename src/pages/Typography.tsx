@@ -36,7 +36,7 @@ export default function Typography() {
           >
             <h1 className="mb-6">Типографика</h1>
             <p className="text-xl text-muted-foreground">Типографика – работа с текстом, один из важнейших аспектов грамотного дизайна
-Помогает быстро и понятно донести важную информацию до покупателя  </p>
+Помогает быстро и понятно донести важную информацию до покупателя</p>
           </motion.div>
 
           <Tabs defaultValue="kerning" className="space-y-12">

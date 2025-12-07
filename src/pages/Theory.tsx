@@ -79,7 +79,7 @@ export default function Theory() {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      <div className="fixed inset-0 -z-10 animated-gradient opacity-5" />
+      <div className="fixed inset-0 -z-10 animated-gradient" />
       <Navigation />
 
       <main className="pt-32 pb-20">
@@ -96,12 +96,14 @@ export default function Theory() {
           </motion.div>
 
           <Tabs defaultValue="sizes" className="space-y-12">
-            <TabsList className="glass-effect p-2">
-              <TabsTrigger value="sizes">Размеры карточек</TabsTrigger>
-              <TabsTrigger value="programs">Программы</TabsTrigger>
-              <TabsTrigger value="resources">Полезные ресурсы</TabsTrigger>
-              <TabsTrigger value="essence">Суть инфографики</TabsTrigger>
-            </TabsList>
+            <div className="overflow-x-auto pb-2">
+              <TabsList className="glass-effect p-2 w-max">
+                <TabsTrigger value="sizes">Размеры карточек</TabsTrigger>
+                <TabsTrigger value="programs">Программы</TabsTrigger>
+                <TabsTrigger value="resources">Полезные ресурсы</TabsTrigger>
+                <TabsTrigger value="essence">Суть инфографики</TabsTrigger>
+              </TabsList>
+            </div>
 
             <TabsContent value="sizes" className="space-y-8">
               <motion.div

@@ -38,7 +38,7 @@ export default function Subscribe() {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      <div className="fixed inset-0 -z-10 animated-gradient opacity-10" />
+      <div className="fixed inset-0 -z-10 animated-gradient" />
       <Header />
 
       <main className="pt-32 pb-20">

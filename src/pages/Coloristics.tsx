@@ -50,7 +50,7 @@ export default function Coloristics() {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      <div className="fixed inset-0 -z-10 animated-gradient opacity-5" />
+      <div className="fixed inset-0 -z-10 animated-gradient" />
       <Navigation />
 
       <main className="pt-32 pb-20">
@@ -67,12 +67,14 @@ export default function Coloristics() {
           </motion.div>
 
           <Tabs defaultValue="theory" className="space-y-12">
-            <TabsList className="glass-effect p-2">
-              <TabsTrigger value="theory">Теория цвета</TabsTrigger>
-              <TabsTrigger value="schemes">Цветовые схемы</TabsTrigger>
-              <TabsTrigger value="mistakes">Частые ошибки</TabsTrigger>
-              <TabsTrigger value="practice">Практика</TabsTrigger>
-            </TabsList>
+            <div className="overflow-x-auto pb-2">
+              <TabsList className="glass-effect p-2 w-max">
+                <TabsTrigger value="theory">Теория цвета</TabsTrigger>
+                <TabsTrigger value="schemes">Цветовые схемы</TabsTrigger>
+                <TabsTrigger value="mistakes">Частые ошибки</TabsTrigger>
+                <TabsTrigger value="practice">Практика</TabsTrigger>
+              </TabsList>
+            </div>
 
             <TabsContent value="theory" className="space-y-8">
               <motion.div

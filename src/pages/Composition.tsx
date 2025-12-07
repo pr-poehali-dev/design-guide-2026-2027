@@ -27,7 +27,7 @@ export default function Composition() {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      <div className="fixed inset-0 -z-10 animated-gradient opacity-5" />
+      <div className="fixed inset-0 -z-10 animated-gradient" />
       <Navigation />
 
       <main className="pt-32 pb-20">
@@ -44,12 +44,14 @@ export default function Composition() {
           </motion.div>
 
           <Tabs defaultValue="symmetry" className="space-y-12">
-            <TabsList className="glass-effect p-2">
-              <TabsTrigger value="symmetry">Виды симметрии</TabsTrigger>
-              <TabsTrigger value="weight">Визуальный вес</TabsTrigger>
-              <TabsTrigger value="focal">Фокусные центры</TabsTrigger>
-              <TabsTrigger value="guides">Направляющие</TabsTrigger>
-            </TabsList>
+            <div className="overflow-x-auto pb-2">
+              <TabsList className="glass-effect p-2 w-max">
+                <TabsTrigger value="symmetry">Виды симметрии</TabsTrigger>
+                <TabsTrigger value="weight">Визуальный вес</TabsTrigger>
+                <TabsTrigger value="focal">Фокусные центры</TabsTrigger>
+                <TabsTrigger value="guides">Направляющие</TabsTrigger>
+              </TabsList>
+            </div>
 
             <TabsContent value="symmetry" className="space-y-8">
               <motion.div

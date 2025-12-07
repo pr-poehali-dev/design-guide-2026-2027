@@ -67,7 +67,7 @@ export default function Login() {
 
   return (
     <div className="min-h-screen relative overflow-hidden flex items-center justify-center">
-      <div className="fixed inset-0 -z-10 animated-gradient opacity-10" />
+      <div className="fixed inset-0 -z-10 animated-gradient" />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}

@@ -67,7 +67,7 @@ export default function CardStyles() {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      <div className="fixed inset-0 -z-10 animated-gradient opacity-5" />
+      <div className="fixed inset-0 -z-10 animated-gradient" />
       <Navigation />
 
       <main className="pt-32 pb-20">

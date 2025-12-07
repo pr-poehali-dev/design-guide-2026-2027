@@ -24,7 +24,7 @@ export default function Typography() {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      <div className="fixed inset-0 -z-10 animated-gradient opacity-5" />
+      <div className="fixed inset-0 -z-10 animated-gradient" />
       <Navigation />
 
       <main className="pt-32 pb-20">
@@ -41,13 +41,15 @@ export default function Typography() {
           </motion.div>
 
           <Tabs defaultValue="kerning" className="space-y-12">
-            <TabsList className="glass-effect p-2">
-              <TabsTrigger value="kerning">Кернинг</TabsTrigger>
-              <TabsTrigger value="tracking">Трекинг</TabsTrigger>
-              <TabsTrigger value="lineheight">Интерлиньяж</TabsTrigger>
-              <TabsTrigger value="weight">Начертания</TabsTrigger>
-              <TabsTrigger value="fonts">Виды шрифтов</TabsTrigger>
-            </TabsList>
+            <div className="overflow-x-auto pb-2">
+              <TabsList className="glass-effect p-2 w-max">
+                <TabsTrigger value="kerning">Кернинг</TabsTrigger>
+                <TabsTrigger value="tracking">Трекинг</TabsTrigger>
+                <TabsTrigger value="lineheight">Интерлиньяж</TabsTrigger>
+                <TabsTrigger value="weight">Начертания</TabsTrigger>
+                <TabsTrigger value="fonts">Виды шрифтов</TabsTrigger>
+              </TabsList>
+            </div>
 
             <TabsContent value="kerning" className="space-y-8">
               <motion.div

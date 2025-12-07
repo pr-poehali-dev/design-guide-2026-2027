@@ -294,8 +294,7 @@ export default function Typography() {
 
                   <div className="rounded-2xl p-8 bg-[#ffffff]">
                     <h3 className="mb-4">Антиквы (Serif)</h3>
-                    <p className="text-muted-foreground mb-6">Шрифты с засечками. Классические, элегантные, располагают к чтению.
-Используйте для заголовков или в премиум-сегменте, чтобы передать надежность, традиционность, уважение</p>
+                    <p className="text-muted-foreground mb-6">Шрифты с засечками. Классические, элегантные. Используются для заголовков, чаще в премиум-сегменте, чтобы передать надежность, традиционность, уважение (Baskerville, Georgia, Rockwell, Lora)</p>
                     <div className="text-4xl font-serif">Премиальные товары</div>
                   </div>
 

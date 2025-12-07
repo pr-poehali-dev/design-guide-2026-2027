@@ -61,7 +61,7 @@ export default function Subscribe() {
             className="glass-effect rounded-3xl p-12 bg-[#ffffff]"
           >
             <div className="text-center mb-8">
-              <div className="text-6xl font-black mb-4">1000₽</div>
+              <div className="text-6xl font-black mb-4">2000₽</div>
               <p className="text-lg text-muted-foreground">
                 Единоразовая оплата • Доступ навсегда
               </p>

@@ -81,7 +81,7 @@ export default function Home() {
             }`}
           >
             <div className="text-center mb-12">
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight py-[218px]">
                 Освойте дизайн для маркетплейсов.<br />
                 Быстро. Легко.
               </h1>
